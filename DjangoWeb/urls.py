@@ -1,3 +1,4 @@
+#coding=utf-8
 """DjangoWeb URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -19,5 +20,10 @@ from django.conf.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'learning_log/',include('learning_log.urls'))
+
+    #主页
+    url(r'^$','homepage.html'),
+
+    url(r'learning_log/',include('learning_log.urls')),
+
 ]
