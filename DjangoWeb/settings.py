@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'DjangoWeb.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'dt55',#使用的数据库名称
+        'NAME': 'djangoweb',#使用的数据库名称
         'USER':'root',#登录mysql数据库的用户名称
         'PASSWORD':'root',#登录mysql数据库的用户密码
         'HOST':'127.0.0.1',#表明使用的是本地mysql数据库
