@@ -1,3 +1,4 @@
+#coding=utf-8
 """
 Django settings for DjangoWeb project.
 
@@ -25,7 +26,7 @@ SECRET_KEY = 'c3$qseh0@%=19y8^3sc^-(vi&o2!87zm)_hnp#*zx)hqmq7^6p'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    #第三方库
+
+    #功能app
+    'learning_log'
 ]
 
 MIDDLEWARE = [
@@ -75,8 +81,12 @@ WSGI_APPLICATION = 'DjangoWeb.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'dt55',#使用的数据库名称
+        'USER':'root',#登录mysql数据库的用户名称
+        'PASSWORD':'root',#登录mysql数据库的用户密码
+        'HOST':'127.0.0.1',#表明使用的是本地mysql数据库
+        'PORT':'3306',#端口号
     }
 }
 
@@ -103,9 +113,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-Hans'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
