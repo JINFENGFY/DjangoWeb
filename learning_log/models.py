@@ -33,3 +33,5 @@ class Comment(models.Model):
     owner = models.ForeignKey (User, on_delete=models.CASCADE, verbose_name=u'所有者')
     learning_log = models.ForeignKey (LearningContent,on_delete=models.CASCADE,verbose_name=u'所有贴')
 
+    def __str__(self):
+        return u'评论:%s--%s--%s' % (self.commentcontent, self.learning_log.title,self.owner)
