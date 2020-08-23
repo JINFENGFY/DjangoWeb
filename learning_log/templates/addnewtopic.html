@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>增加笔记</title>
+</head>
+<body>
+    {% block main %}
+        <p>
+            新增加一个笔记
+        </p>
+        <form action="{% url 'learning_log:newtopic' %}" method="post">
+        {% csrf_token %}
+            {{ add_topic_form.as_p }}
+
+        <input type="submit" value="提交">
+        </form>
+
+    {% endblock %}
+</body>
+</html>
