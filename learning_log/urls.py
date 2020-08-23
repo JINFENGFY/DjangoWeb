@@ -2,6 +2,9 @@
 
 from django.conf.urls import url
 
-urlpatterns =[
+from learning_log import views
 
+urlpatterns =[
+    #显示主页，显示所有项目
+    url(r'',views.Index.as_view(),name='index'),
 ]
