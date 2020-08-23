@@ -40,10 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #第三方库
-    'bootstrap3'
 
     #功能app
-    'learning_log'
+    'learning_log',
 ]
 
 MIDDLEWARE = [
@@ -130,8 +129,3 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-
-#django-bootstrap3的配置
-BOOTSTRAP3={
-    'include_jquery':True,
-}
