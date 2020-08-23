@@ -22,8 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     #主页
-    url(r'^$','homepage.html'),
-
-    url(r'learning_log/',include('learning_log.urls')),
+    url(r'',include('learning_log.urls',namespace='learning_log')),
 
 ]
