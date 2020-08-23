@@ -13,3 +13,11 @@ class Topic (View):
     def get(self,request):
         topics=LearningContent.objects.all().order_by('-createdTime')
         return render(request,'topics.html',{'topics':topics})
+
+
+class DetailedTopic (View):
+    def get(self,request,topic_id):
+        topic=LearningContent.objects.get(lnum=topic_id)
+        comment=topic.comment_set.values('commentcontent')
+
+        return render(request,'topic.html',{'topic':topic,'comment':comment})

@@ -10,5 +10,8 @@ urlpatterns =[
     url(r'^$',views.Index.as_view(),name='index'),
 
     #显示所有学习笔记
-    url(r'^topic/',views.Topic.as_view(),name='topic')
+    url(r'^topic/$',views.Topic.as_view(),name='topics'),
+
+    #显示特定的读书笔记
+    url(r'^topic/(?P<topic_id>\d+)/$',views.DetailedTopic.as_view(),name='topic')
 ]
