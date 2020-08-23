@@ -8,7 +8,7 @@
 <body>
     {% block main %}
         <p>
-            <h3>{{ topic.title }}</h3>
+            <h3>{{ topic.title }}--{{ topic.createdTime|date:'Y-m-d h:m:s' }}</h3>
         </p>
         <p>
             内容：
