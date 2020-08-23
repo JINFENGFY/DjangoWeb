@@ -14,7 +14,7 @@
         <ul>
             {% for topic in topics %}
                 <li>
-                    {{ topic|split_str:"5," }}
+                    <a href="/topic/{{ topic.lnum }}">{{ topic|split_str:"5," }}</a>
                 </li>
                 {% empty %}
                     <li>
