@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load Custom_filters %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% block main %}
+        <p>
+            <h3>学习笔记</h3>
+        </p>
+        <ul>
+            {% for topic in topics %}
+                <li>
+                    {{ topic|split_str:"5," }}
+                </li>
+                {% empty %}
+                    <li>
+                        没有一条项目！
+                    </li>
+            {% endfor %}
+        </ul>
+    {% endblock %}
+
+</body>
+</html>
