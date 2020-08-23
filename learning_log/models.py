@@ -19,7 +19,7 @@ class LearningContent(models.Model):
     lnum=models.AutoField(primary_key=True)
     title=models.CharField(max_length=30,verbose_name=u'题目')
     content=models.TextField(verbose_name=u'内容')
-    createdTime=models.DateTimeField(default=timezone.now(),verbose_name=u'创建时间')
+    createdTime=models.DateTimeField(default=timezone.now,verbose_name=u'创建时间')
     owner=models.ForeignKey(User,on_delete=models.CASCADE,related_name='learning_log',verbose_name=u'所有者')
     categories=models.ManyToManyField(Category,verbose_name=u'类型')
 
