@@ -22,6 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     #主页
-    url(r'',include('learning_log.urls',namespace='learning_log')),
+    url(r'',include(('learning_log.urls','learning_log'),namespace='learning_log')),
 
 ]
