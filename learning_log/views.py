@@ -1,6 +1,8 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views import View
+
+from learning_log.models import Category
 from .forms import *
 from django.urls import reverse
 # Create your views here.
@@ -28,13 +30,17 @@ class DetailedTopic (View):
 class NewTopic (View):
     def get(self,request):
         add_topic=TopicForm()
-        return render(request,'addnewtopic.html',{'add_topic_form':add_topic})
+        categories = Category.objects.all ()
+        return render(request,'addnewtopic.html',{'add_topic_form':add_topic,
+                                                  'categories':categories})
 
     def post(self,request):
         form=TopicForm(request.POST)
+        category = request.POST.getlist ("category")
 
         if form.is_valid():
             add_topic=form.save(commit=False)
+            add_topic.categories.add(category)
             add_topic.owner=request.user
-            add_topic.save
+            add_topic.save()
             return HttpResponseRedirect(reverse('learning_log:topics'))
