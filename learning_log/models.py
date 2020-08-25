@@ -23,8 +23,12 @@ class LearningContent(models.Model):
     owner=models.ForeignKey(User,on_delete=models.CASCADE,related_name='learning_log',verbose_name=u'所有者')
     categories=models.ManyToManyField(Category,verbose_name=u'类型')
 
+#参考https://www.cnblogs.com/yunweiqiang/p/7391259.html
     def __str__(self):
-        return u'学习笔记:%s--%s' % (self.title, self.owner)
+        try:
+            return u'学习笔记:%s--%s' % (self.title, self.owner)
+        except User.DoesNotExist:
+            return u'学习笔记:%s' % (self.title,)
 
 #评论模型
 class Comment(models.Model):

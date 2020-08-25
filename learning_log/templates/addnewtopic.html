@@ -17,7 +17,7 @@
 
         <p>类型：</p>
             {% for category in categories %}
-                <input type="checkbox" name="category" value="{{ category|split_str:"3," }}">{{ category|split_str:"3," }}<br>
+                <input type="checkbox" name="category" value="{{ category.cnum }}">{{ category|split_str:"3," }}<br>
             {% endfor %}
 
 

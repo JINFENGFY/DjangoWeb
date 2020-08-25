@@ -39,13 +39,18 @@ class NewTopic (View):
 
     def post(self,request):
         form=TopicForm(request.POST)
-        category = request.POST.getlist ("category")
+
+        #返回的值必需能转换为int类型
+        category = request.POST.getlist("category")
 
         if form.is_valid():
             add_topic=form.save(commit=False)
-            add_topic.categories.add(category)
             add_topic.owner=request.user
             add_topic.save()
+
+            #一定要先保存主体后再进行对多对多关系得保存，不然主题还没有生成主键
+            #参考解决https://blog.csdn.net/fengyu09/article/details/17434795
+            add_topic.categories.add (*category)
             return HttpResponseRedirect(reverse('learning_log:topics'))
 
 @method_decorator(login_required(),name='dispatch')

@@ -23,7 +23,9 @@
             {% endfor %}
         </ul>
         <p>
-            <a href="{% url 'learning_log:newtopic' %}">增加新笔记</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'learning_log:newtopic' %}">增加新笔记</a>
+            {% endif %}
         </p>
     {% endblock %}
 
