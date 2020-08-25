@@ -44,3 +44,19 @@ class NewTopic (View):
             add_topic.owner=request.user
             add_topic.save()
             return HttpResponseRedirect(reverse('learning_log:topics'))
+
+
+class EditTopic (View):
+    def get(self,request,topic_id):
+        topic=LearningContent.objects.get(lnum=topic_id)
+        form=TopicForm(instance=topic)
+
+        return render(request,'edittopic.html',{'topic':topic,'form':form})
+
+    def post(self,request,topic_id):
+        topic = LearningContent.objects.get (lnum=topic_id)
+        form=TopicForm(instance=topic,data=request.POST)
+        if form.is_valid():
+            form.save()
+
+            return HttpResponseRedirect(reverse('learning_log:topic',args=[topic_id]))

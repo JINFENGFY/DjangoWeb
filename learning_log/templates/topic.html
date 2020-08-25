@@ -18,6 +18,9 @@
             {% for c in topic.categories.all %}
                 {{ c }}--
             {% endfor %}
+            <p>
+                <a href="{% url 'learning_log:edittopic' topic.lnum %}">修改</a>
+            </p>
         </p>
         <p>
             评论:
