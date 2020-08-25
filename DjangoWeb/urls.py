@@ -24,4 +24,7 @@ urlpatterns = [
     #主页
     url(r'',include(('learning_log.urls','learning_log'),namespace='learning_log')),
 
+    #用户
+    url(r'^users/',include(('users.urls','users'),namespace='users')),
+
 ]
