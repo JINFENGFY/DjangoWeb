@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+</head>
+<body>
+    {% block main %}
+        <form action="{% url 'users:register' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <input type="submit" value="注册">
+            <input type="hidden" name="next" value="{% url 'learning_log:index' %}">
+        </form>
+    {% endblock %}
+
+</body>
+</html>

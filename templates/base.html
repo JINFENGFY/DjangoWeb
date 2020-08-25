@@ -14,7 +14,8 @@
             你好,{{ user.username }}.--
             <a href="{% url 'users:loginout' %}">退出</a>
             {% else %}
-                <a href="{% url 'users:login' %}">登录</a>
+                <a href="{% url 'users:login' %}">登录</a>--
+                <a href="{% url 'users:register' %}">注册</a>
         {% endif %}
     </p>
 
