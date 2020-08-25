@@ -22,7 +22,8 @@
                 {% endfor %}
             </p>
             <p>
-                <a href="{% url 'learning_log:edittopic' topic.lnum %}">修改</a>
+                <a href="{% url 'learning_log:edittopic' topic.lnum %}">修改</a>--
+                <a href="{% url 'learning_log:deltopic' topic.lnum %}">删除</a>
             </p>
         </p>
         <p>

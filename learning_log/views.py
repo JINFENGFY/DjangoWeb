@@ -68,3 +68,11 @@ class EditTopic (View):
             form.save()
 
             return HttpResponseRedirect(reverse('learning_log:topic',args=[topic_id]))
+
+@method_decorator(login_required(),name='dispatch')
+class DelTopic (View):
+    def get(self,request,topic_id):
+        topic=LearningContent.objects.get(lnum=topic_id)
+        topic.delete()
+
+        return HttpResponseRedirect(reverse('learning_log:topics'))

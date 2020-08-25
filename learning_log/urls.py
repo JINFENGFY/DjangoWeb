@@ -19,5 +19,8 @@ urlpatterns =[
     url(r'^add_new_topic/$',views.NewTopic.as_view(),name='newtopic'),
 
     #编辑笔记
-    url(r'^edit_topic/(?P<topic_id>\d+)/$',views.EditTopic.as_view(),name='edittopic')
+    url(r'^edit_topic/(?P<topic_id>\d+)/$',views.EditTopic.as_view(),name='edittopic'),
+
+    #删除笔记
+    url(r'^del_topic/(?P<topic_id>\d+)/$',views.DelTopic.as_view(),name='deltopic')
 ]
