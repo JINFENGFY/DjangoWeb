@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+</head>
+<body>
+    {% block main %}
+        {% if form.errors %}
+            你输入的账户密码不正确，请重新输入
+        {% endif %}
+
+        <form action="{% url 'users:login' %}" method="post">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <input type="submit" value="登录">
+            <input type="hidden" name="next" value="{% url 'learning_log:index' %}">
+        </form>
+    {% endblock %}
+
+</body>
+</html>
