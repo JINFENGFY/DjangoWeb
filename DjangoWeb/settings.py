@@ -139,4 +139,3 @@ STATIC_URL = '/static/'
 LOGOUT_REDIRECT_URL='learning_log:index'
 #设置访问限制路径
 LOGIN_URL = 'learning_log:index'
-

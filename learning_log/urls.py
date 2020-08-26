@@ -10,13 +10,13 @@ urlpatterns =[
     url(r'^$',views.Index.as_view(),name='index'),
 
     #显示所有公开学习笔记
-    url(r'^topic/$',views.Topic.as_view(),name='topics'),
+    url(r'^topics/(?P<page_num>\d+)/$',views.Topic.as_view(),name='topics'),
 
     #显示特定的读书笔记
     url(r'^topic/(?P<topic_id>\d+)/$',views.DetailedTopic.as_view(),name='topic'),
 
     #显示我的学习笔记
-    url(r'^show_my_topics/$',views.ShowMyTopics.as_view(),name='mytopic'),
+    url(r'^show_my_topics/(?P<page_num>\d+)/$',views.ShowMyTopics.as_view(),name='mytopic'),
 
     #增加新笔记
     url(r'^add_new_topic/$',views.NewTopic.as_view(),name='newtopic'),

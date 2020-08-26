@@ -12,7 +12,7 @@
             <h3>我的学习笔记</h3>
         </p>
         <ul>
-            {% for topic in mytopics %}
+            {% for topic in curpage_data %}
                 <li style="margin-bottom: 10px">
                     <a href="{% url 'learning_log:topic' topic.lnum %}">{{ topic|split_str:"5," }}</a>
                 </li>
@@ -22,6 +22,22 @@
                     </li>
             {% endfor %}
         </ul>
+         <div>
+            {# has_previous判断该页前面有没有数据 previous_page_number获得前一页的页码#}
+            {% if curpage_data.has_previous %}
+            <a href="{% url 'learning_log:mytopic' curpage_data.previous_page_number %}">上一页</a>
+            {% endif %}
+
+            {# 传入pager对象的原因 需要获得页码范围 #}
+            {% for n in pager.page_range %}
+            <a href="{% url 'learning_log:mytopic' n %}">{{ n }}</a>&emsp;
+            {% endfor %}
+
+
+            {% if curpage_data.has_next %}
+            <a href="{% url 'learning_log:mytopic' curpage_data.next_page_number %}">下一页</a>
+            {% endif %}
+        </div>
         <p>
             <a href="{% url 'learning_log:newtopic' %}">增加新笔记</a>
         </p>

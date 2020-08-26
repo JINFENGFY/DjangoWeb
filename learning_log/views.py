@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.views import View
+from django.core.paginator import PageNotAnInteger,Paginator,EmptyPage
 
 from learning_log.models import Category
 from .forms import *
@@ -17,9 +18,14 @@ class Index (View):
 
 #显示所有项目
 class Topic (View):
-    def get(self,request):
-        topics=LearningContent.objects.filter(private=1).order_by('-createdTime')
-        return render(request,'topics.html',{'topics':topics})
+    def get(self,request,page_num):
+        #获取数据
+        topics = LearningContent.objects.filter (private=1).order_by ('-createdTime')
+
+        #调用自定义分页器
+        pager,curpage_data=MyPager(topics,page_num,3)
+
+        return render(request,'topics.html',{'pager':pager,'curpage_data':curpage_data})
 
 class DetailedTopic (View):
     def get(self,request,topic_id):
@@ -31,10 +37,12 @@ class DetailedTopic (View):
 # dispatch 为所有方法添加修饰器， 例如‘get’，为单一方法提供修饰器，也可以放在方法头
 @method_decorator (login_required (), name='dispatch')
 class ShowMyTopics (View):
-    def get(self,request):
+    def get(self,request,page_num):
         user=User.objects.get(username=request.user)
         mytopics=LearningContent.objects.filter(owner=user.id).order_by('-createdTime')
-        return render(request,'showmytopics.html',{'mytopics':mytopics})
+
+        pager,curpage_data=MyPager(mytopics,page_num,3)
+        return render(request,'showmytopics.html',{'pager':pager,'curpage_data':curpage_data})
 
 @method_decorator(login_required(),name='dispatch')
 class NewTopic (View):
@@ -85,3 +93,19 @@ class DelTopic (View):
         return HttpResponseRedirect(reverse('learning_log:topics'))
 
 
+def MyPager(data,page_num,perpage):
+    int_num = int (page_num)
+
+    # 创建分页器对象
+    pager = Paginator (data,perpage)
+
+    # 获取当前页数据
+    try:
+        curpage_data = pager.page (int_num)
+    except PageNotAnInteger:
+        curpage_data = pager.page (1)
+    # 输入越界
+    except EmptyPage:
+        curpage_data = pager.page (pager.num_pages)
+
+    return pager,curpage_data
