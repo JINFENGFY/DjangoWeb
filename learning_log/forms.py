@@ -6,6 +6,7 @@ class TopicForm(forms.ModelForm):
     class Meta:
         model=LearningContent
 
-        fields=('title','content',)
-        labels={'title':'题目','content':'内容'}
-        widgets={'content':forms.Textarea(attrs={'cols':80})}
+        fields=('title','content','private')
+        labels={'title':'题目','content':'内容','private':'是否公开'}
+        widgets={'content':forms.Textarea(attrs={'cols':80}),
+                 'private':forms.CheckboxInput}

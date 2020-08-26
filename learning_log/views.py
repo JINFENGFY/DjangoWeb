@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
@@ -17,17 +18,23 @@ class Index (View):
 #显示所有项目
 class Topic (View):
     def get(self,request):
-        topics=LearningContent.objects.all().order_by('-createdTime')
+        topics=LearningContent.objects.filter(private=1).order_by('-createdTime')
         return render(request,'topics.html',{'topics':topics})
 
-#dispatch 为所有方法添加修饰器， 例如‘get’，为单一方法提供修饰器，也可以放在方法头
-@method_decorator(login_required(),name='dispatch')
 class DetailedTopic (View):
     def get(self,request,topic_id):
         topic=LearningContent.objects.get(lnum=topic_id)
         comment=topic.comment_set.values('commentcontent')
 
         return render(request,'topic.html',{'topic':topic,'comment':comment})
+
+# dispatch 为所有方法添加修饰器， 例如‘get’，为单一方法提供修饰器，也可以放在方法头
+@method_decorator (login_required (), name='dispatch')
+class ShowMyTopics (View):
+    def get(self,request):
+        user=User.objects.get(username=request.user)
+        mytopics=LearningContent.objects.filter(owner=user.id).order_by('-createdTime')
+        return render(request,'showmytopics.html',{'mytopics':mytopics})
 
 @method_decorator(login_required(),name='dispatch')
 class NewTopic (View):
@@ -76,3 +83,5 @@ class DelTopic (View):
         topic.delete()
 
         return HttpResponseRedirect(reverse('learning_log:topics'))
+
+

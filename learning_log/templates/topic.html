@@ -21,10 +21,14 @@
                     {{ c|split_str:"3,"  }}--
                 {% endfor %}
             </p>
-            <p>
-                <a href="{% url 'learning_log:edittopic' topic.lnum %}">修改</a>--
-                <a href="{% url 'learning_log:deltopic' topic.lnum %}">删除</a>
-            </p>
+            {% if user.is_authenticated %}
+                {% ifequal topic.owner request.user %}
+                    <p>
+                        <a href="{% url 'learning_log:edittopic' topic.lnum %}">修改</a>--
+                        <a href="{% url 'learning_log:deltopic' topic.lnum %}">删除</a>
+                    </p>
+                {% endifequal %}
+            {% endif %}
         </p>
         <p>
             评论:
