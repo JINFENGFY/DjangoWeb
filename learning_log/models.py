@@ -2,6 +2,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from tinymce.models import HTMLField
 
 # Create your models here.
 
@@ -18,7 +19,7 @@ class Category (models.Model):
 class LearningContent(models.Model):
     lnum=models.AutoField(primary_key=True)
     title=models.CharField(max_length=30,verbose_name=u'题目')
-    content=models.TextField(verbose_name=u'内容')
+    content=HTMLField(null=True,blank=True,verbose_name=u'内容')
     createdTime=models.DateTimeField(default=timezone.now,verbose_name=u'创建时间')
     private=models.BooleanField(default=False,verbose_name=u'是否公开')
     owner=models.ForeignKey(User,on_delete=models.CASCADE,related_name='learning_log',verbose_name=u'所有者')

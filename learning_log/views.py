@@ -57,16 +57,18 @@ class NewTopic (View):
 
         #返回的值必需能转换为int类型
         category = request.POST.getlist("category")
+        content=request.POST.get('comment_content')
 
         if form.is_valid():
             add_topic=form.save(commit=False)
             add_topic.owner=request.user
+            add_topic.content=content
             add_topic.save()
 
             #一定要先保存主体后再进行对多对多关系得保存，不然主题还没有生成主键
             #参考解决https://blog.csdn.net/fengyu09/article/details/17434795
             add_topic.categories.add (*category)
-            return HttpResponseRedirect(reverse('learning_log:topics'))
+            return HttpResponseRedirect(reverse('learning_log:topics',args=[1]))
 
 @method_decorator(login_required(),name='dispatch')
 class EditTopic (View):
@@ -90,7 +92,7 @@ class DelTopic (View):
         topic=LearningContent.objects.get(lnum=topic_id)
         topic.delete()
 
-        return HttpResponseRedirect(reverse('learning_log:topics'))
+        return HttpResponseRedirect(reverse('learning_log:topics',args=[1]))
 
 
 def MyPager(data,page_num,perpage):

@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load Custom_filters %}
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,12 +9,27 @@
 </head>
 <body>
     {% block main %}
+        <script type="text/javascript" src="../../static/tiny_mce/tiny_mce.js"></script>
+        <script>
+         tinyMCE.init({
+           'mode':'textareas',
+           'theme':'advanced',
+            'width':450,
+           'height':300
+        })</script>
+
         <p>
             新增加一个笔记
         </p>
         <form action="{% url 'learning_log:newtopic' %}" method="post">
         {% csrf_token %}
             {{ add_topic_form.as_p }}
+
+
+            <p>
+                <textarea class="comment_content" name="comment_content">富文本</textarea>
+            </p>
+
 
         <p>类型：</p>
             {% for category in categories %}

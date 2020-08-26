@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #第三方库
+    'tinymce',
 
     #功能app
     'learning_log',
@@ -139,3 +140,10 @@ STATIC_URL = '/static/'
 LOGOUT_REDIRECT_URL='learning_log:index'
 #设置访问限制路径
 LOGIN_URL = 'learning_log:index'
+
+#富文本编辑器配置
+TINYMCE_DEFAULT_CONFIG = {
+    'theme': 'advanced',
+    'width': '800',
+    'height': '400',
+}
