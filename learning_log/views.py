@@ -75,14 +75,27 @@ class EditTopic (View):
     def get(self,request,topic_id):
         topic=LearningContent.objects.get(lnum=topic_id)
         form=TopicForm(instance=topic)
+        categories=Category.objects.all ()
+        category=topic.categories.all()
 
-        return render(request,'edittopic.html',{'topic':topic,'form':form})
+        return render(request,'edittopic.html',{'topic':topic,'form':form,
+                                                'categories':categories,
+                                                'category':category})
 
     def post(self,request,topic_id):
+        category = request.POST.getlist ("category")
+        content = request.POST.get ('comment_content')
         topic = LearningContent.objects.get (lnum=topic_id)
+
+        #先删除掉多对多关系数据，再存储
+        topic.categories.clear()
+
         form=TopicForm(instance=topic,data=request.POST)
         if form.is_valid():
-            form.save()
+            fo=form.save(commit=False)
+            fo.content=content
+            fo.save()
+            fo.categories.add (*category)
 
             return HttpResponseRedirect(reverse('learning_log:topic',args=[topic_id]))
 

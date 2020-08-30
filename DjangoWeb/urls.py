@@ -32,5 +32,8 @@ urlpatterns = [
     #富文本编辑器
     url(r'^tinymce/', include('tinymce.urls')),
 
+    #转到搜索引擎内部
+    url(r'search/',include('haystack.urls'))
+
 
 ]

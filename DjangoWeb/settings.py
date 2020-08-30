@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     #第三方库
     'tinymce',
+    'haystack',
 
     #功能app
     'learning_log',
@@ -147,3 +148,14 @@ TINYMCE_DEFAULT_CONFIG = {
     'width': '800',
     'height': '400',
 }
+
+#检索分词文件路径
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
+    },
+}
+
+#实时生成索引文件(数据更新实时生成 )
+HAYSTACK_SIGNAL_PROCESSOR='haystack.signals.RealtimeSignalProcessor'

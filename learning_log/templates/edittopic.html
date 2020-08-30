@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load Custom_filters %}
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +9,15 @@
 </head>
 <body>
     {% block main %}
+        <script type="text/javascript" src="../../static/tiny_mce/tiny_mce.js"></script>
+        <script>
+         tinyMCE.init({
+           'mode':'textareas',
+           'theme':'advanced',
+            'width':450,
+           'height':300
+        })</script>
+
         <P>
             <a href="{% url 'learning_log:topic' topic.lnum %}">取消修改并返回</a>
         </P>
@@ -17,6 +27,23 @@
         <form action="{% url 'learning_log:edittopic' topic.lnum %}" method="post">
         {% csrf_token %}
             {{ form.as_p }}
+
+        <p>
+            <label for=" comment_content ">
+                <textarea class="comment_content" name="comment_content">{{ topic.content }}</textarea>
+            </label>
+        </p>
+
+        <p>类型：</p>
+        {% for cas in categories %}
+                {% if cas in category %}
+                <input type="checkbox" name="category" value="{{ cas.cnum }}" checked="checked">
+                {{ cas|split_str:"3," }}
+                {% else %}
+                <input type="checkbox" name="category" value="{{ cas.cnum }}">
+                {{ cas|split_str:"3," }}
+                {% endif %}
+        {% endfor %}
 
         <p>
             <input type="submit" value="提交">

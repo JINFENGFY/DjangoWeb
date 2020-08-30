@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% block main %}
+        <div class="archives" style="margin-left: 500px">
+            {% if query %}
+                {% for c_post in page.object_list  %}
+                    <h1>
+                        <a href="{% url 'learning_log:topic' c_post.object.lnum %}">{{ c_post.object.title }}</a>
+
+                    </h1>
+                    {% empty %}
+                        无记录
+                {% endfor %}
+
+
+            {% endif %}
+
+        </div>
+    {% endblock main %}
+</body>
+</html>
