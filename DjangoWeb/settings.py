@@ -152,7 +152,7 @@ TINYMCE_DEFAULT_CONFIG = {
 #检索分词文件路径
 HAYSTACK_CONNECTIONS = {
     'default': {
-        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'ENGINE': 'learning_log.whoosh_backend_jeiba.WhooshEngine',
         'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
     },
 }
