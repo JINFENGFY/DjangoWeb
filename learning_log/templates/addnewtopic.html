@@ -9,14 +9,18 @@
 </head>
 <body>
     {% block main %}
-        <script type="text/javascript" src="../../static/tiny_mce/tiny_mce.js"></script>
+        <script type="text/javascript" src="/static/tiny_mce/tiny_mce.js"></script>
+        <script type="text/javascript" src="/static/tiny_mce/plugins/example/editor_plugin.js"></script>
         <script>
          tinyMCE.init({
-           'mode':'textareas',
-           'theme':'advanced',
-            'width':450,
-           'height':300
-        })</script>
+           {#'mode':'textareas',#}
+           {#'theme':'advanced',#}
+             selector: '#mytextarea',
+             toolbar: 'undo redo | styleselect | bold italic | link image',
+            'width':1200,
+           'height':600,
+        })
+        </script>
 
         <p>
             新增加一个笔记
@@ -27,7 +31,7 @@
 
 
             <p>
-                <textarea class="comment_content" name="comment_content">富文本</textarea>
+                <textarea class="comment_content" name="comment_content" id="mytextarea">富文本</textarea>
             </p>
 
 
