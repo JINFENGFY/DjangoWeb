@@ -1,401 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="55fab8f2-7f62-4cc0-b63c-0b87c07b8542" name="默认" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/DjangoWeb.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/DjangoWeb.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DjangoWeb/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/DjangoWeb/settings.py" afterDir="false" />
+    <list default="true" id="55fab8f2-7f62-4cc0-b63c-0b87c07b8542" name="默认" comment="将整个tinymce添加进项目里，实现富文本编辑器">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/learning_log/templates/addnewtopic.html" beforeDir="false" afterPath="$PROJECT_DIR$/learning_log/templates/addnewtopic.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/ar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/az.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/be.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/bg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/bn.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/br.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/bs.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/ca.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/ch.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/cn.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/cs.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/ct.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/cy.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/da.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/de.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/dv.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/el.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/en.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/eo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/es.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/et.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/eu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/fa.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/fi.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/fr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/gl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/gu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/he.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/hi.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/hr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/hu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/hy.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/ia.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/id.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/is.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/it.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/ja.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/ka.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/kb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/kk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/kl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/km.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/ko.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/lb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/lt.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/lv.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/mk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/ml.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/mn.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/ms.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/my.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/nb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/nl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/nn.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/no.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/pl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/ps.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/pt.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/ro.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/ru.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/sc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/se.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/si.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/sk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/sl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/sq.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/sr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/sv.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/sy.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/ta.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/te.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/th.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/tiny_mce_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/tn.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/tr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/tt.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/tw.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/uk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/ur.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/vi.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/zh-cn.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/zh-tw.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/zh.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/langs/zu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/about.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/anchor.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/charmap.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/color_picker.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/editor_template.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/editor_template_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/image.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/img/colorpicker.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/img/flash.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/img/icons.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/img/iframe.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/img/pagebreak.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/img/quicktime.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/img/realmedia.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/img/shockwave.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/img/trans.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/img/video.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/img/windowsmedia.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/js/about.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/js/anchor.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/js/charmap.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/js/color_picker.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/js/image.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/js/link.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/js/source_editor.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/ar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/ar_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/az.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/az_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/be.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/be_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/bg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/bg_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/bn.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/bn_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/br.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/br_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/bs.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/bs_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/ca.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/ca_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/ch.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/ch_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/cn.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/cn_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/cs.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/cs_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/ct.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/ct_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/cy.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/cy_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/da.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/da_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/de.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/de_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/dv.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/dv_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/el.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/el_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/en.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/en_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/eo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/eo_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/es.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/es_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/et.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/et_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/eu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/eu_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/fa.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/fa_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/fi.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/fi_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/fr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/fr_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/gl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/gl_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/gu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/gu_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/he.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/he_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/hi.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/hi_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/hr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/hr_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/hu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/hu_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/hy.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/hy_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/ia.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/ia_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/id.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/id_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/is.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/is_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/it.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/it_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/ja.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/ja_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/ka.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/ka_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/kb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/kb_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/kk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/kk_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/kl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/kl_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/km.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/km_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/ko.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/ko_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/lb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/lb_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/lt.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/lt_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/lv.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/lv_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/mk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/mk_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/ml.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/ml_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/mn.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/mn_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/ms.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/ms_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/my.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/my_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/nb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/nb_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/nl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/nl_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/nn.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/nn_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/no.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/no_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/pl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/pl_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/ps.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/ps_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/pt.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/pt_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/ro.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/ro_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/ru.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/ru_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/sc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/sc_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/se.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/se_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/si.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/si_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/sk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/sk_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/sl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/sl_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/sq.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/sq_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/sr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/sr_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/sv.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/sv_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/sy.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/sy_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/ta.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/ta_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/te.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/te_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/th.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/th_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/tn.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/tn_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/tr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/tr_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/tt.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/tt_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/tw.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/tw_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/uk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/uk_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/ur.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/ur_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/vi.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/vi_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/zh-cn.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/zh-cn_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/zh-tw.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/zh-tw_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/zh.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/zh_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/zu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/langs/zu_dlg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/link.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/shortcuts.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/skins/default/content.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/skins/default/dialog.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/skins/default/img/buttons.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/skins/default/img/items.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/skins/default/img/menu_arrow.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/skins/default/img/menu_check.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/skins/default/img/progress.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/skins/default/img/tabs.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/skins/default/ui.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/skins/highcontrast/content.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/skins/highcontrast/dialog.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/skins/highcontrast/ui.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/skins/o2k7/content.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/skins/o2k7/dialog.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/skins/o2k7/img/button_bg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/skins/o2k7/img/button_bg_black.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/skins/o2k7/img/button_bg_silver.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/skins/o2k7/ui.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/skins/o2k7/ui_black.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/skins/o2k7/ui_silver.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/advanced/source_editor.htm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/editor_template.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/editor_template_src.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/img/icons.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/ar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/az.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/be.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/bg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/bn.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/br.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/bs.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/ca.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/ch.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/cn.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/cs.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/ct.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/cy.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/da.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/de.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/dv.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/el.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/en.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/eo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/es.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/et.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/eu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/fa.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/fi.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/fr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/gl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/gu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/he.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/hi.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/hr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/hu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/hy.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/ia.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/id.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/is.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/it.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/ja.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/ka.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/kb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/kk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/kl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/km.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/ko.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/lb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/lt.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/lv.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/mk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/ml.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/mn.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/ms.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/my.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/nb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/nl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/nn.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/no.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/pl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/ps.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/pt.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/ro.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/ru.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/sc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/se.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/si.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/sk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/sl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/sq.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/sr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/sv.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/sy.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/ta.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/te.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/th.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/tn.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/tr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/tt.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/tw.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/uk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/ur.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/vi.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/zh-cn.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/zh-tw.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/zh.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/langs/zu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/skins/default/content.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/skins/default/ui.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/skins/o2k7/content.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/skins/o2k7/img/button_bg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/themes/simple/skins/o2k7/ui.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/tiny_mce_src.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/learning_log/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/learning_log/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -414,8 +24,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -439,19 +50,21 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/static" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Rainbow Brackets" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Desktop\Django\DjangoWeb" />
-      <recent name="D:\Desktop\Django\DjangoWeb\static\js" />
-      <recent name="D:\Desktop\Django\DjangoWeb\learning_log" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Desktop\Django\DjangoWeb\static\js" />
       <recent name="D:\Desktop\Django\DjangoWeb\learning_log\templates" />
       <recent name="D:\Desktop\Django\DjangoWeb\templates" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Desktop\Django\DjangoWeb\static" />
+      <recent name="D:\Desktop\Django\DjangoWeb" />
+      <recent name="D:\Desktop\Django\DjangoWeb\static\js" />
+      <recent name="D:\Desktop\Django\DjangoWeb\learning_log" />
     </key>
   </component>
   <component name="RunManager">
@@ -551,7 +164,8 @@
       <workItem from="1598841166518" duration="547000" />
       <workItem from="1598841794189" duration="174000" />
       <workItem from="1598842034526" duration="388000" />
-      <workItem from="1598842494393" duration="8634000" />
+      <workItem from="1598842494393" duration="8996000" />
+      <workItem from="1599032344778" duration="9114000" />
     </task>
     <task id="LOCAL-00001" summary="(1)创建learning_log(2)在设置中配置app，配置连接mysql数据库(3)设置中文和时区(4)在根路由中配置转到learning_log的路径">
       <created>1598062285609</created>
@@ -868,7 +482,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598801779935</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="将整个tinymce添加进项目里，实现富文本编辑器">
+      <created>1598860508899</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1598860508919</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -884,7 +505,6 @@
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="自定义修饰器文件" />
     <MESSAGE value="显示所有读书笔记功能" />
     <MESSAGE value="修改" />
     <MESSAGE value="添加了一个过滤器，使得界面更加简洁" />
@@ -909,28 +529,37 @@
     <MESSAGE value="针对富文本编辑器输出的html标签进行转译" />
     <MESSAGE value="添加了基于whoosh引擎的全文检索功能" />
     <MESSAGE value="添加jiaba分词库以支持中文检索功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加jiaba分词库以支持中文检索功能" />
+    <MESSAGE value="将整个tinymce添加进项目里，实现富文本编辑器" />
+    <option name="LAST_COMMIT_MESSAGE" value="将整个tinymce添加进项目里，实现富文本编辑器" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1323" height="182" key="GridCell.Tab.0.bottom" timestamp="1598858013272">
+    <state x="179" y="0" key="CommitChangelistDialog2" timestamp="1598860492568">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="182" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1598858013272" />
-    <state width="1323" height="182" key="GridCell.Tab.0.center" timestamp="1598858013272">
+    <state x="179" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1598860492568" />
+    <state width="1323" height="182" key="GridCell.Tab.0.bottom" timestamp="1599063314583">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="182" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1598858013272" />
-    <state width="1323" height="182" key="GridCell.Tab.0.left" timestamp="1598858013272">
+    <state width="1323" height="182" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1599063314583" />
+    <state width="1323" height="182" key="GridCell.Tab.0.center" timestamp="1599063314583">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="182" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1598858013272" />
-    <state width="1323" height="182" key="GridCell.Tab.0.right" timestamp="1598858013272">
+    <state width="1323" height="182" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1599063314583" />
+    <state width="1323" height="182" key="GridCell.Tab.0.left" timestamp="1599063314583">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="182" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1598858013272" />
+    <state width="1323" height="182" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1599063314583" />
+    <state width="1323" height="182" key="GridCell.Tab.0.right" timestamp="1599063314583">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="1323" height="182" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1599063314583" />
     <state x="130" y="30" width="998" height="708" key="SettingsEditor" timestamp="1598843322242">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="130" y="30" width="998" height="708" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1598843322242" />
+    <state x="275" y="104" key="Vcs.Push.Dialog.v2" timestamp="1598860515029">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="275" y="104" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1598860515029" />
   </component>
 </project>
