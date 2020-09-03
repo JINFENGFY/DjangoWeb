@@ -23,7 +23,7 @@
                  <div class="row">
                      <div class="col-xs-9">
                          {% for category in topic.categories.all %}
-                            <span class="label label-success">{{ category }}</span>
+                            <span class="label label-success">{{ category|split_str:"3," }}</span>
                          {% endfor %}
                      </div>
                      <div class="col-xs-3">
@@ -54,7 +54,7 @@
 
                 <!--传入pager对象的原因 需要获得页码范围 -->
                 {% for n in pager.page_range %}
-                    <li><a href="{% url 'learning_log:topics' n %}">{{ n }}</a></li>
+                    <li class="active"><a href="{% url 'learning_log:topics' n %}">{{ n }}</a></li>
                 {% endfor %}
 
                 <li>
@@ -79,6 +79,7 @@
                 </div>
             </div>
         </div>
+
 
     {% endblock %}
 
