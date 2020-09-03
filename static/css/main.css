@@ -16,14 +16,14 @@ body,html {
 }
 
 .container_full .footerpush {
-    height: 80px;
+    height: 60px;
 }
 
 .footer {
     clear: both;
     position: relative;
-    margin-top: -80px;
-    height: 80px;
+    margin-top: -60px;
+    height: 60px;
 }
 
 button a{
