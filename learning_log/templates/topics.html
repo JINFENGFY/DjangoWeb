@@ -54,7 +54,12 @@
 
                 <!--传入pager对象的原因 需要获得页码范围 -->
                 {% for n in pager.page_range %}
-                    <li class="active"><a href="{% url 'learning_log:topics' n %}">{{ n }}</a></li>
+                    {% if n == page_num %}
+                        <li class="active"><a href="{% url 'learning_log:topics' n %}">{{ n }}</a></li>
+                        {% else %}
+                        <li><a href="{% url 'learning_log:topics' n %}">{{ n }}</a></li>
+                    {% endif %} 
+
                 {% endfor %}
 
                 <li>

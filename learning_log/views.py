@@ -25,7 +25,8 @@ class Topic (View):
         #调用自定义分页器
         pager,curpage_data=MyPager(topics,page_num,3)
 
-        return render(request,'topics.html',{'pager':pager,'curpage_data':curpage_data})
+        return render(request,'topics.html',{'pager':pager,'curpage_data':curpage_data,
+                                             'page_num':int(page_num)})
 
 class DetailedTopic (View):
     def get(self,request,topic_id):
@@ -45,7 +46,7 @@ class ShowMyTopics (View):
 
         pager,curpage_data=MyPager(mytopics,page_num,3)
         return render(request,'showmytopics.html',{'pager':pager,'curpage_data':curpage_data,
-                                                   'len_user':len_user})
+                                                   'len_user':len_user,'page_num':int(page_num)})
 
 @method_decorator(login_required(),name='dispatch')
 class NewTopic (View):
