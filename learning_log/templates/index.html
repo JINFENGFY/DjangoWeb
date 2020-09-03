@@ -18,17 +18,22 @@
 
             <hr>
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-4">
-                      <p><a class="btn btn-success btn-lg" href="{% url 'users:login' %}" role="button">登录账户</a></p>
-                    </div>
-                    <div class="col-lg-4">
-                      <p><a class="btn btn-success btn-lg" href="{% url 'users:register' %}" role="button">注册账户</a></p>
-                    </div>
-                    <div class="col-lg-4">
-                      <p><a class="btn btn-success btn-lg" href="{% url 'learning_log:topics' 1 %}" role="button">游客身份访问</a></p>
-                    </div>
-            </div>
+                {% if user.is_authenticated %}
+                      <p><a class="btn btn-success btn-lg" href="{% url 'learning_log:topics' 1 %}" role="button">进入学习笔记</a></p>
+                    {% else %}
+                          <div class="row">
+                                <div class="col-lg-4">
+                                  <p><a class="btn btn-success btn-lg" href="{% url 'users:login' %}" role="button">登录账户</a></p>
+                                </div>
+                                <div class="col-lg-4">
+                                  <p><a class="btn btn-success btn-lg" href="{% url 'users:register' %}" role="button">注册账户</a></p>
+                                </div>
+                                <div class="col-lg-4">
+                                  <p><a class="btn btn-success btn-lg" href="{% url 'learning_log:topics' 1 %}" role="button">游客身份访问</a></p>
+                                </div>
+                          </div>
+                {% endif %}
+
             </div>
       </div>
 
