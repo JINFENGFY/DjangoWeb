@@ -140,6 +140,8 @@ STATIC_URL = '/static/'
 # from django.conf import global_settings
 # global_settings
 
+#设置登录跳转路径
+LOGIN_REDIRECT_URL='/topics/1'
 #设置退出路径
 LOGOUT_REDIRECT_URL='learning_log:index'
 #设置访问限制路径
