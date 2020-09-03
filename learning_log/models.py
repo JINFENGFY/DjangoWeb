@@ -28,7 +28,7 @@ class LearningContent(models.Model):
 #参考https://www.cnblogs.com/yunweiqiang/p/7391259.html
     def __str__(self):
         try:
-            return u'学习笔记:%s--%s' % (self.title, self.owner)
+            return u'学习笔记:%s-----%s' % (self.title, self.owner)
         except User.DoesNotExist:
             return u'学习笔记:%s' % (self.title,)
 
