@@ -1,9 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
     margin-top: 50px;
 }
 
+body,html {
+    height: 100%;
+}
+
 .container_full {
-    height: 580px;
+    min-height: 100%;
+}
+
+.container_full .footerpush {
+    height: 80px;
+}
+
+.footer {
+    clear: both;
+    position: relative;
+    margin-top: -80px;
+    height: 80px;
 }
 
 button a{
