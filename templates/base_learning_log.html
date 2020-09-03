@@ -57,7 +57,7 @@
       </div>
   </nav>
   <body>
-    <div class="container-fluid">
+    <div class="container-fluid container_full">
     <div class="col-sm-9 col-xs-12" name="left-container">
         {% block main %}
 
@@ -66,6 +66,7 @@
     <div class="col-sm-3 hidden-xs" name="right-container">
         <div class="order orderby-category" >
             <div class="list-group">
+                <div style="text-align: center">分类信息</div>
                   {% for category in Side_nav_categories %}
                         <a href="#" class="list-group-item">{{ category.categories__category }}
                         <span class="badge">{{ category.c }}</span></a>
@@ -74,6 +75,7 @@
         </div>
         <div class="order orderby-createtime" >
             <div class="list-group">
+                <div style="text-align: center">最新文章</div>
                   {% for recentlog in Side_nav_recentlog %}
                         <a href="#" class="list-group-item">{{ recentlog.title|split_str_cut:8 }}
                         ({{ recentlog.createdTime|date:"Y-m-d"}})</a>
@@ -82,6 +84,12 @@
         </div>
     </div>
     </div>
+
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted">JINFENG 2020</p>
+      </div>
+    </footer>
 
 
     <script src="/static/jquery-3.0.0.min.js"></script>

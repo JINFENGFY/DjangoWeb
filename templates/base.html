@@ -1,5 +1,3 @@
-{% load staticfiles %}
-{% load Custom_filters %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -27,7 +25,6 @@
           </div>
 
           <div class="navbar-right">
-
               {% if user.is_authenticated %}
                         <p class="navbar-text">你好,{{ user.username }}</p>
                         <button type="button" class="btn btn-default navbar-btn">
@@ -47,9 +44,16 @@
       </div>
   </nav>
   <body>
-    {% block mian %}
+    <div class="container container_full">
+        {% block main %}
+        {% endblock %}
+    </div>
 
-    {% endblock %}
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted">JINFENG 2020</p>
+      </div>
+    </footer>
 
     <script src="/static/jquery-3.0.0.min.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
