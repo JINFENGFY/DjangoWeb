@@ -40,9 +40,12 @@ class ShowMyTopics (View):
     def get(self,request,page_num):
         user=User.objects.get(username=request.user)
         mytopics=LearningContent.objects.filter(owner=user.id).order_by('-createdTime')
+        #清除标题中的用户名（更加美观）
+        len_user='5,-'+str(len(user.username)+5)
 
         pager,curpage_data=MyPager(mytopics,page_num,3)
-        return render(request,'showmytopics.html',{'pager':pager,'curpage_data':curpage_data})
+        return render(request,'showmytopics.html',{'pager':pager,'curpage_data':curpage_data,
+                                                   'len_user':len_user})
 
 @method_decorator(login_required(),name='dispatch')
 class NewTopic (View):
