@@ -26,8 +26,18 @@
               </a>
           </div>
 
-          <div class="navbar-right">
+                    <p class="navbar-text"><a href="{% url 'learning_log:topics' 1 %}" class="navbar-link">
+                        显示所有笔记</a></p>
 
+          <form class="navbar-form col-xs-3 col-xs-offset-6" role="search" action="/search/" method="get">
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="请输入搜索内容" name="q">
+                  </div>
+                  <button type="submit" class="btn btn-default">搜索</button>
+          </form>
+
+
+          <div class="navbar-right">
               {% if user.is_authenticated %}
                         <p class="navbar-text">你好,{{ user.username }}</p>
                         <button type="button" class="btn btn-default navbar-btn">
@@ -47,9 +57,32 @@
       </div>
   </nav>
   <body>
-    {% block mian %}
+    <div class="container-fluid">
+    <div class="col-sm-9 col-xs-12" name="left-container">
+        {% block main %}
 
-    {% endblock %}
+        {% endblock %}
+    </div>
+    <div class="col-sm-3 hidden-xs" name="right-container">
+        <div class="order orderby-category" >
+            <div class="list-group">
+                  {% for category in Side_nav_categories %}
+                        <a href="#" class="list-group-item">{{ category.categories__category }}
+                        <span class="badge">{{ category.c }}</span></a>
+                  {% endfor %}
+            </div>
+        </div>
+        <div class="order orderby-createtime" >
+            <div class="list-group">
+                  {% for recentlog in Side_nav_recentlog %}
+                        <a href="#" class="list-group-item">{{ recentlog.title|split_str_cut:8 }}
+                        ({{ recentlog.createdTime|date:"Y-m-d"}})</a>
+                  {% endfor %}
+            </div>
+        </div>
+    </div>
+    </div>
+
 
     <script src="/static/jquery-3.0.0.min.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
