@@ -11,11 +11,27 @@
 </head>
 <body>
     {% block main %}
-        <p>
-            这是个初始的学习网站，它以后可能包含有其他功能，但是现在它就是一个学习网站！
-        </p>
+        <div class="jumbotron">
+            <h1>Learning_log</h1>
+            <p class="lead">这是一个专注于你学习的学习笔记记录网站，
+                它以后会包含很多的功能，但是现在，它只是一个学习网站</p>
+
+            <hr>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                      <p><a class="btn btn-success btn-lg" href="{% url 'users:login' %}" role="button">登录账户</a></p>
+                    </div>
+                    <div class="col-lg-4">
+                      <p><a class="btn btn-success btn-lg" href="{% url 'users:register' %}" role="button">注册账户</a></p>
+                    </div>
+                    <div class="col-lg-4">
+                      <p><a class="btn btn-success btn-lg" href="{% url 'learning_log:topic' 1 %}" role="button">游客身份访问</a></p>
+                    </div>
+            </div>
+            </div>
+      </div>
 
     {% endblock %}
-
 </body>
 </html>
