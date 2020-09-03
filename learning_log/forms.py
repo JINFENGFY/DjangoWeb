@@ -7,5 +7,5 @@ class TopicForm(forms.ModelForm):
         model=LearningContent
 
         fields=('title','private')
-        labels={'title':'题目','private':'是否公开'}
-        widgets={'private':forms.CheckboxInput}
+        labels={'title':'','private':u'是否公开'}
+

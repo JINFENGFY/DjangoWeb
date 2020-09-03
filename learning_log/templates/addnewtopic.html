@@ -1,15 +1,18 @@
-{% extends 'base_learning_log_show.html' %}
-{% load Custom_filters %}
+{% extends 'base_learning_log_editor.html' %}
 {% load staticfiles %}
+{% load bootstrap3 %}
+{% load Custom_filters %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>
         {% block title %}
-            新笔记
+            新增笔记
         {% endblock %}
     </title>
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
 </head>
 <body>
     {% block main %}
@@ -26,30 +29,42 @@
         })
         </script>
 
-        <div class="blog-header">
-        <h1 class="blog-title">新笔记：</h1>
+        <div class="blog-header text-center">
+        <h1 class="blog-title">新笔记</h1>
         </div>
 
-        <form action="{% url 'learning_log:newtopic' %}" method="post">
+        <form class="form-horizontal" action="{% url 'learning_log:newtopic' %}" method="post">
         {% csrf_token %}
-            {{ add_topic_form.as_p }}
+              <div class="form-group">
+                  <label class="col-sm-2 control-label">题目:</label>
+                  <div class="col-sm-10">
+                      {% bootstrap_form add_topic_form %}
+                  </div>
+              </div>
+
+              <div class="form-group">
+                <label for="mytextarea" class="col-sm-2 control-label">内容:</label>
+                <div class="col-sm-10">
+                  <textarea class="comment_content" name="comment_content" id="mytextarea"></textarea>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-sm-2 control-label">类型：</label>
+                    <div class="col-sm-10" style="margin-top: 5px">
+                        {% for category in categories %}
+                            <input type="checkbox" name="category" value="{{ category.cnum }}">{{ category|split_str:"3," }}
+                        {% endfor %}
+                    </div>
 
 
-            <p>
-                <textarea class="comment_content" name="comment_content" id="mytextarea">富文本</textarea>
-            </p>
-
-
-        <p>类型：</p>
-            {% for category in categories %}
-                <input type="checkbox" name="category" value="{{ category.cnum }}">{{ category|split_str:"3," }}<br>
-            {% endfor %}
-
-        <p>
-            <input type="submit" value="提交">
-        </p>
+              </div>
+              <div class="col-sm-offset-2 col-sm-10">
+                 <button type="submit" class="btn btn-default">提交</button>
+              </div>
         </form>
 
     {% endblock %}
+
 </body>
 </html>

@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     #第三方库
     'tinymce',
     'haystack',
+    'bootstrap3',
 
     #功能app
     'learning_log',
@@ -157,3 +158,8 @@ HAYSTACK_CONNECTIONS = {
 
 #实时生成索引文件(数据更新实时生成 )
 HAYSTACK_SIGNAL_PROCESSOR='haystack.signals.RealtimeSignalProcessor'
+
+#django-bootstrap3的设置
+BOOTSTRAP3={
+    'include_jquery':True
+}

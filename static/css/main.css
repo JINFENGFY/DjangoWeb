@@ -19,3 +19,7 @@ a:hover {
     margin-top: 15px;
     height: 250px;
 }
+
+.form-control {
+    width: 50%;
+}
