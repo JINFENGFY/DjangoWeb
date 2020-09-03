@@ -8,42 +8,37 @@
 </head>
 <body>
     {% block main %}
-        <p>
-            <h3>{{ topic.title }}--{{ topic.createdTime|date:'Y-m-d h:m:s' }}</h3>
+        <div class="blog-header">
+        <h1 class="blog-title">{{ topic.title }}</h1>
+        <p class="lead blog-categories">
+            {% for c in topic.categories.all %}
+                <span class="label label-success">{{ c|split_str:"3,"  }}</span>
+            {% endfor %}
         </p>
-        <p>
-            笔记内容：
-        </p>
-        <p>
-            {{ topic.content|safe }}--{{ topic.owner }}
-            <p>类型：
-                {% for c in topic.categories.all %}
-                    {{ c|split_str:"3,"  }}--
-                {% endfor %}
-            </p>
-            {% if user.is_authenticated %}
-                {% ifequal topic.owner request.user %}
-                    <p>
-                        <a href="{% url 'learning_log:edittopic' topic.lnum %}">修改</a>--
-                        <a href="{% url 'learning_log:deltopic' topic.lnum %}">删除</a>--
-                        <a href="{% url 'learning_log:mytopic' 1 %}">返回</a>
-                    </p>
-                {% endifequal %}
-            {% endif %}
-        </p>
-        <p>
-            评论:
-        </p>
-        <p>
-            <ul>
-                {% for com in comment %}
-                    {{ com.commentcontent }}
-                    {% empty %}
-                        没有评论！
-                {% endfor %}
-            </ul>
+      </div>
 
-        </p>
+        <div class="blog-main">
+              <div class="blog-post">
+                <p class="blog-post-meta">{{ topic.createdTime|date:'Y-m-d h:m:s' }} by <a href="#">{{ topic.owner }}</a></p>
+
+                <div>{{ topic.content|safe }}</div>
+              </div>
+        </div>
+            <hr/>
+                {% if user.is_authenticated %}
+                    {% ifequal topic.owner request.user %}
+                        <div class="btn-group" role="group" aria-label="...">
+                          <a type="button" class="btn btn-primary" href="{% url 'learning_log:edittopic' topic.lnum %}">修改</a>
+                          <a type="button" class="btn btn-primary" href="{% url 'learning_log:deltopic' topic.lnum %}">删除</a>
+                          <a type="button" class="btn btn-primary" href="{% url 'learning_log:mytopic' 1 %}">返回</a>
+                        </div>
+                        {% else %}
+                            <a type="button" class="btn btn-primary" href="{% url 'learning_log:mytopic' 1 %}">返回</a>
+                    {% endifequal %}
+                    {% else %}
+                        <a type="button" class="btn btn-primary" href="{% url 'learning_log:topics' 1 %}">返回</a>
+                {% endif %}
+
 
     {% endblock %}
 
