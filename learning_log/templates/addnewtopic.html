@@ -1,11 +1,15 @@
-{% extends 'base_learning_log.html' %}
+{% extends 'base_learning_log_show.html' %}
 {% load Custom_filters %}
 {% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>增加笔记</title>
+    <title>
+        {% block title %}
+            新笔记
+        {% endblock %}
+    </title>
 </head>
 <body>
     {% block main %}
@@ -22,9 +26,10 @@
         })
         </script>
 
-        <p>
-            新增加一个笔记
-        </p>
+        <div class="blog-header">
+        <h1 class="blog-title">新笔记：</h1>
+        </div>
+
         <form action="{% url 'learning_log:newtopic' %}" method="post">
         {% csrf_token %}
             {{ add_topic_form.as_p }}
