@@ -5,7 +5,7 @@ from .models import *
 
 def Side_navigation_bar_data(request):
     #分类归档
-    categories=LearningContent.objects.values('categories__category','categories')\
+    categories=LearningContent.objects.values('categories__category','id')\
         .annotate(c=Count('*')).order_by('-c')
 
     #近期文章
