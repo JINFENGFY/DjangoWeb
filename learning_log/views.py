@@ -115,9 +115,12 @@ class OrCategory(View):
     def get(self,request,category_id,page_num):
         topics=LearningContent.objects.filter(categories=category_id).order_by('-createdTime')
 
+        cate_name=Category.objects.get(cnum=category_id)
+
         pager, curpage_data = MyPager (topics, page_num, 3)
         return render(request,'show_category.html',{'pager':pager,'curpage_data':curpage_data,
-                                             'page_num':int(page_num),'category_id':category_id})
+                                             'page_num':int(page_num),'category_id':category_id,
+                                                    'cate_name':cate_name})
 
 
 def MyPager(data,page_num,perpage):

@@ -6,14 +6,14 @@
     <meta charset="UTF-8">
     <title>
         {% block title %}
-            查询结果
+            {{ cate_name|split_str:"3," }}
         {% endblock %}
     </title>
 </head>
 <body>
     {% block main %}
         <div class="page-header">
-          <h1>学习笔记：</h1>
+          <h1>{{ cate_name|split_str:"3," }}：</h1>
         </div>
 
         {% for topic in curpage_data %}
@@ -79,11 +79,9 @@
                 </div>
                 </div>
                 <div class="col-xs-3">
-                    {% if user.is_authenticated %}
                         <div class="btn-group btn-group-sm" role="group" aria-label="..." style="margin-top: 10%">
                           <a type="button" class="btn btn-primary" href="{% url 'learning_log:topics' 1 %}">返回</a>
                         </div>
-                    {% endif %}
                 </div>
             </div>
         </div>
