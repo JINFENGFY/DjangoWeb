@@ -17,7 +17,7 @@
             {{ form.as_p }}
 
             <input type="submit" value="登录">
-            <input type="hidden" name="next" value="{% url 'learning_log:index' %}">
+            <input type="hidden" name="next" value="{% url 'learning_log:topics' 1 %}">
         </form>
     {% endblock %}
 

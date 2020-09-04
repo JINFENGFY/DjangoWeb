@@ -68,7 +68,7 @@
             <div class="list-group">
                 <div style="text-align: center">分类信息</div>
                   {% for category in Side_nav_categories %}
-                        <a href="#" class="list-group-item">{{ category.categories__category }}
+                        <a href="{% url 'learning_log:category' category.categories 1 %}" class="list-group-item">{{ category.categories__category }}
                         <span class="badge">{{ category.c }}</span></a>
                   {% endfor %}
             </div>

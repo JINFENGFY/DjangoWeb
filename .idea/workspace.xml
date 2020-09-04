@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="55fab8f2-7f62-4cc0-b63c-0b87c07b8542" name="默认" comment="将整个tinymce添加进项目里，实现富文本编辑器">
+    <list default="true" id="55fab8f2-7f62-4cc0-b63c-0b87c07b8542" name="默认" comment="优化了分页按钮，使得所在当前页的按钮高亮显示">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/learning_log/templates/topics.html" beforeDir="false" afterPath="$PROJECT_DIR$/learning_log/templates/topics.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/learning_log/my_context_processor.py" beforeDir="false" afterPath="$PROJECT_DIR$/learning_log/my_context_processor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/learning_log/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/learning_log/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/learning_log/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/learning_log/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/whoosh_index/MAIN.tmp/9lld6i94mlzr65b57yekq67zj3g8.run" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/whoosh_index/MAIN.tmp/axemzwkf7rii6ev26pty0y2ri5yc.ctmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/whoosh_index/MAIN_y14sbyxd4ckcw5kp.pst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/whoosh_index/MAIN_y14sbyxd4ckcw5kp.trm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/whoosh_index/_MAIN_1.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base_learning_log_show.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base_learning_log_show.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/login.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +45,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/static" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Rainbow Brackets" />
   </component>
@@ -163,84 +161,10 @@
       <workItem from="1598842034526" duration="388000" />
       <workItem from="1598842494393" duration="8996000" />
       <workItem from="1599032344778" duration="12493000" />
-      <workItem from="1599090017779" duration="18613000" />
-    </task>
-    <task id="LOCAL-00015" summary="django2相比与django1在使用include命名空间时需要指定appname">
-      <created>1598144996516</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1598144996516</updated>
-    </task>
-    <task id="LOCAL-00016" summary="重写__str__">
-      <created>1598145366464</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1598145366464</updated>
-    </task>
-    <task id="LOCAL-00017" summary="母版页">
-      <created>1598145691180</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1598145691180</updated>
-    </task>
-    <task id="LOCAL-00018" summary="主页">
-      <created>1598145866484</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1598145866484</updated>
-    </task>
-    <task id="LOCAL-00019" summary="自定义修饰器文件">
-      <created>1598164412354</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1598164412354</updated>
-    </task>
-    <task id="LOCAL-00020" summary="自定义修饰器文件">
-      <created>1598164457783</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1598164457783</updated>
-    </task>
-    <task id="LOCAL-00021" summary="显示所有读书笔记功能">
-      <created>1598164567845</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1598164567845</updated>
-    </task>
-    <task id="LOCAL-00022" summary="修改">
-      <created>1598168479155</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1598168479155</updated>
-    </task>
-    <task id="LOCAL-00023" summary="添加了一个过滤器，使得界面更加简洁">
-      <created>1598168555456</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1598168555456</updated>
-    </task>
-    <task id="LOCAL-00024" summary="显示某个学习笔记的详情">
-      <created>1598168606242</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1598168606242</updated>
-    </task>
-    <task id="LOCAL-00025" summary="修改地址解析方式">
-      <created>1598169050153</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1598169050153</updated>
+      <workItem from="1599090017779" duration="28286000" />
+      <workItem from="1599148540293" duration="633000" />
+      <workItem from="1599149581733" duration="276000" />
+      <workItem from="1599195326164" duration="3420000" />
     </task>
     <task id="LOCAL-00026" summary="增加显示创建时间">
       <created>1598169356889</created>
@@ -508,7 +432,84 @@
       <option name="project" value="LOCAL" />
       <updated>1599116489184</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="优化了分页按钮，使得所在当前页的按钮高亮显示">
+      <created>1599116846272</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1599116846272</updated>
+    </task>
+    <task id="LOCAL-00065" summary="使用bootstrap3装饰搜索结果页面">
+      <created>1599117908333</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1599117908333</updated>
+    </task>
+    <task id="LOCAL-00066" summary="重命名模板页（用于显示的模板页）">
+      <created>1599120107757</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1599120107757</updated>
+    </task>
+    <task id="LOCAL-00067" summary="针对编辑页面的模板页">
+      <created>1599124091818</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1599124091818</updated>
+    </task>
+    <task id="LOCAL-00068" summary="使用bootstrap3装饰新增笔记页面">
+      <created>1599124173313</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1599124173313</updated>
+    </task>
+    <task id="LOCAL-00069" summary="增加了返回按钮">
+      <created>1599126892151</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1599126892151</updated>
+    </task>
+    <task id="LOCAL-00070" summary="使用bootstrap3装饰修改笔记页面">
+      <created>1599126939231</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1599126939231</updated>
+    </task>
+    <task id="LOCAL-00071" summary="更改页脚，使页脚固定在底部">
+      <created>1599127970825</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1599127970825</updated>
+    </task>
+    <task id="LOCAL-00072" summary="更改页脚">
+      <created>1599128065255</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1599128065255</updated>
+    </task>
+    <task id="LOCAL-00073" summary="更改页脚">
+      <created>1599128232597</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1599128232597</updated>
+    </task>
+    <task id="LOCAL-00074" summary="更改返回字段名称">
+      <created>1599197540344</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1599197540345</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -524,15 +525,6 @@
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="隐私保护功能" />
-    <MESSAGE value="功能的完善" />
-    <MESSAGE value="对显示所有读书笔记和显示个人读书笔记添加了分页功能" />
-    <MESSAGE value="前后端添加了富文本编辑器" />
-    <MESSAGE value="针对富文本编辑器输出的html标签进行转译" />
-    <MESSAGE value="添加了基于whoosh引擎的全文检索功能" />
-    <MESSAGE value="添加jiaba分词库以支持中文检索功能" />
-    <MESSAGE value="将整个tinymce添加进项目里，实现富文本编辑器" />
-    <MESSAGE value="利用bootstrap3给学习笔记前端增加样式" />
     <MESSAGE value="全局上下文，用于显示侧方导航栏" />
     <MESSAGE value="添加了一套专门用于学习笔记的模板页用于显示更加详细的内容，原先的模板页更加简化，方便后续添加更多功能" />
     <MESSAGE value="添加了页脚" />
@@ -546,39 +538,48 @@
     <MESSAGE value="设置登陆后的跳转路径" />
     <MESSAGE value="使用bootstrap3对用户个人笔记页面进行装饰" />
     <MESSAGE value="清除标题中的用户名（更加美观）" />
-    <MESSAGE value="增加了返回按钮" />
     <MESSAGE value="优化" />
     <MESSAGE value="用bootstrap3装饰学习笔记详情页" />
-    <option name="LAST_COMMIT_MESSAGE" value="用bootstrap3装饰学习笔记详情页" />
+    <MESSAGE value="优化了分页按钮，使得所在当前页的按钮高亮显示" />
+    <MESSAGE value="使用bootstrap3装饰搜索结果页面" />
+    <MESSAGE value="重命名模板页（用于显示的模板页）" />
+    <MESSAGE value="针对编辑页面的模板页" />
+    <MESSAGE value="使用bootstrap3装饰新增笔记页面" />
+    <MESSAGE value="增加了返回按钮" />
+    <MESSAGE value="使用bootstrap3装饰修改笔记页面" />
+    <MESSAGE value="更改页脚，使页脚固定在底部" />
+    <MESSAGE value="更改页脚" />
+    <MESSAGE value="更改返回字段名称" />
+    <option name="LAST_COMMIT_MESSAGE" value="更改返回字段名称" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="323" y="0" key="CommitChangelistDialog2" timestamp="1599116487874">
+    <state x="323" y="0" key="CommitChangelistDialog2" timestamp="1599197535475">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="323" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1599116487874" />
-    <state width="1323" height="182" key="GridCell.Tab.0.bottom" timestamp="1599116285917">
+    <state x="323" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1599197535475" />
+    <state width="1323" height="182" key="GridCell.Tab.0.bottom" timestamp="1599198776124">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="182" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1599116285917" />
-    <state width="1323" height="182" key="GridCell.Tab.0.center" timestamp="1599116285917">
+    <state width="1323" height="182" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1599198776124" />
+    <state width="1323" height="182" key="GridCell.Tab.0.center" timestamp="1599198776124">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="182" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1599116285917" />
-    <state width="1323" height="182" key="GridCell.Tab.0.left" timestamp="1599116285917">
+    <state width="1323" height="182" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1599198776124" />
+    <state width="1323" height="182" key="GridCell.Tab.0.left" timestamp="1599198776124">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="182" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1599116285917" />
-    <state width="1323" height="182" key="GridCell.Tab.0.right" timestamp="1599116285917">
+    <state width="1323" height="182" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1599198776124" />
+    <state width="1323" height="182" key="GridCell.Tab.0.right" timestamp="1599198776124">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="182" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1599116285917" />
+    <state width="1323" height="182" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1599198776124" />
     <state x="130" y="30" width="998" height="708" key="SettingsEditor" timestamp="1598843322242">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="130" y="30" width="998" height="708" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1598843322242" />
-    <state x="275" y="104" key="Vcs.Push.Dialog.v2" timestamp="1599116444038">
+    <state x="275" y="104" key="Vcs.Push.Dialog.v2" timestamp="1599197543857">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="275" y="104" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1599116444038" />
+    <state x="275" y="104" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1599197543857" />
   </component>
 </project>

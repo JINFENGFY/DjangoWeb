@@ -25,5 +25,8 @@ urlpatterns =[
     url(r'^edit_topic/(?P<topic_id>\d+)/$',views.EditTopic.as_view(),name='edittopic'),
 
     #删除笔记
-    url(r'^del_topic/(?P<topic_id>\d+)/$',views.DelTopic.as_view(),name='deltopic')
+    url(r'^del_topic/(?P<topic_id>\d+)/$',views.DelTopic.as_view(),name='deltopic'),
+
+    #根据分类信息查找
+    url(r'orderby_category/(?P<category_id>\d+)/(?P<page_num>\d+)/$',views.OrCategory.as_view(),name='category')
 ]

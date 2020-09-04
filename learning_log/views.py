@@ -111,6 +111,14 @@ class DelTopic (View):
 
         return HttpResponseRedirect(reverse('learning_log:topics',args=[1]))
 
+class OrCategory(View):
+    def get(self,request,category_id,page_num):
+        topics=LearningContent.objects.filter(categories=category_id).order_by('-createdTime')
+
+        pager, curpage_data = MyPager (topics, page_num, 3)
+        return render(request,'show_category.html',{'pager':pager,'curpage_data':curpage_data,
+                                             'page_num':int(page_num),'category_id':category_id})
+
 
 def MyPager(data,page_num,perpage):
     int_num = int (page_num)
@@ -128,3 +136,5 @@ def MyPager(data,page_num,perpage):
         curpage_data = pager.page (pager.num_pages)
 
     return pager,curpage_data
+
+
