@@ -1,24 +1,28 @@
 {% extends 'base.html' %}
+{% load bootstrap3 %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>login</title>
+
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
 </head>
 <body>
     {% block main %}
-        {% if form.errors %}
-            你输入的账户密码不正确，请重新输入
-        {% endif %}
-
-        <form action="{% url 'users:login' %}" method="post">
+        <div class="container">
+            <h2>请输入您的账户密码</h2>
+            <hr>
+            <form action="{% url 'users:login' %}" method="post">
             {% csrf_token %}
+            {% bootstrap_form form %}
 
-            {{ form.as_p }}
-
-            <input type="submit" value="登录">
+            <button name="submit" class="btn btn-primary">登录</button>
             <input type="hidden" name="next" value="{% url 'learning_log:topics' 1 %}">
-        </form>
+            </form>
+        </div>
+
     {% endblock %}
 
 </body>
