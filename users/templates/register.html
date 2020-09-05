@@ -1,19 +1,28 @@
 {% extends 'base.html' %}
+{% load bootstrap3 %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>注册</title>
+
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
 </head>
 <body>
     {% block main %}
-        <form action="{% url 'users:register' %}" method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
+        <div class="container">
+            <h2>注册一个属于你自己的账户</h2>
+            <hr>
+            <form action="{% url 'users:register' %}" method="post">
+                {% csrf_token %}
+                {% bootstrap_form form %}
 
-            <input type="submit" value="注册">
-            <input type="hidden" name="next" value="{% url 'learning_log:index' %}">
-        </form>
+                <button name="submit" class="btn btn-primary">注册</button>
+                <input type="hidden" name="next" value="{% url 'learning_log:index' %}">
+            </form>
+        </div>
+
     {% endblock %}
 
 </body>

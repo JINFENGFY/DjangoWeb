@@ -23,5 +23,5 @@ class Register (View):
             authenticated_user=authenticate(username=new_user.username,
                                             password=request.POST['password1'])
             login(request,authenticated_user)
-            return HttpResponseRedirect(reverse('learning_log:topics'))
+            return HttpResponseRedirect(reverse('learning_log:topics',args=[1]))
         return render(request,'register.html',{'form':self.form1})
