@@ -24,6 +24,8 @@ class LearningContent(models.Model):
     private=models.BooleanField(default=False,verbose_name=u'是否公开')
     owner=models.ForeignKey(User,on_delete=models.CASCADE,related_name='learning_log',verbose_name=u'所有者')
     categories=models.ManyToManyField(Category,verbose_name=u'类型')
+    users_like=models.ManyToManyField(User,related_name='log_like',verbose_name=u'点赞用户',blank=True)
+    like_count=models.IntegerField(verbose_name=u'点赞个数',default=0)
 
 #参考https://www.cnblogs.com/yunweiqiang/p/7391259.html
     def __str__(self):

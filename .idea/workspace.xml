@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="55fab8f2-7f62-4cc0-b63c-0b87c07b8542" name="默认" comment="优化了分页按钮，使得所在当前页的按钮高亮显示">
+    <list default="true" id="55fab8f2-7f62-4cc0-b63c-0b87c07b8542" name="默认" comment="增加根据类别筛选文章功能">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/learning_log/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/learning_log/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/learning_log/my_context_processor.py" beforeDir="false" afterPath="$PROJECT_DIR$/learning_log/my_context_processor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/learning_log/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/learning_log/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/learning_log/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/learning_log/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base_learning_log_show.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base_learning_log_show.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/login.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +35,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
   <component name="JupyterTrust" id="5cc4da7d-c22e-40e8-8659-57f9f6b982a8" />
   <component name="ProjectId" id="1gqSGwg3kz6VgjjT8fgcEG0ec4J" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -47,7 +53,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Rainbow Brackets" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -164,42 +170,8 @@
       <workItem from="1599090017779" duration="28286000" />
       <workItem from="1599148540293" duration="633000" />
       <workItem from="1599149581733" duration="276000" />
-      <workItem from="1599195326164" duration="3420000" />
-    </task>
-    <task id="LOCAL-00026" summary="增加显示创建时间">
-      <created>1598169356889</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1598169356889</updated>
-    </task>
-    <task id="LOCAL-00027" summary="增加显示创建时间">
-      <created>1598169402545</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1598169402545</updated>
-    </task>
-    <task id="LOCAL-00028" summary="添加新学习笔记功能">
-      <created>1598171939737</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1598171939737</updated>
-    </task>
-    <task id="LOCAL-00029" summary="增加新笔记功能">
-      <created>1598172120720</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1598172120720</updated>
-    </task>
-    <task id="LOCAL-00030" summary="添加新笔记的更新">
-      <created>1598237841395</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1598237841395</updated>
+      <workItem from="1599195326164" duration="16708000" />
+      <workItem from="1599296517055" duration="11479000" />
     </task>
     <task id="LOCAL-00031" summary="修改笔记功能">
       <created>1598322749048</created>
@@ -509,7 +481,42 @@
       <option name="project" value="LOCAL" />
       <updated>1599197540345</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="改错">
+      <created>1599198852383</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1599198852383</updated>
+    </task>
+    <task id="LOCAL-00076" summary="增加根据类别筛选文章功能">
+      <created>1599198918614</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1599198918614</updated>
+    </task>
+    <task id="LOCAL-00077" summary="优化显示类别题目">
+      <created>1599199445010</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1599199445010</updated>
+    </task>
+    <task id="LOCAL-00078" summary="修改了返回按钮的url">
+      <created>1599297413970</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1599297413971</updated>
+    </task>
+    <task id="LOCAL-00079" summary="非用户不能点赞">
+      <created>1599297636605</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1599297636605</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -525,11 +532,6 @@
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="全局上下文，用于显示侧方导航栏" />
-    <MESSAGE value="添加了一套专门用于学习笔记的模板页用于显示更加详细的内容，原先的模板页更加简化，方便后续添加更多功能" />
-    <MESSAGE value="添加了页脚" />
-    <MESSAGE value="优化了主页" />
-    <MESSAGE value="对词条显示进行优化" />
     <MESSAGE value="更正url导向错误" />
     <MESSAGE value="更改了注册之后的重定向页面" />
     <MESSAGE value="优化了主页面" />
@@ -550,36 +552,53 @@
     <MESSAGE value="更改页脚，使页脚固定在底部" />
     <MESSAGE value="更改页脚" />
     <MESSAGE value="更改返回字段名称" />
-    <option name="LAST_COMMIT_MESSAGE" value="更改返回字段名称" />
+    <MESSAGE value="改错" />
+    <MESSAGE value="增加根据类别筛选文章功能" />
+    <MESSAGE value="优化显示类别题目" />
+    <MESSAGE value="修改了返回按钮的url" />
+    <MESSAGE value="非用户不能点赞" />
+    <option name="LAST_COMMIT_MESSAGE" value="非用户不能点赞" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="323" y="0" key="CommitChangelistDialog2" timestamp="1599197535475">
+    <state x="137" y="26" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599301488632">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="323" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1599197535475" />
-    <state width="1323" height="182" key="GridCell.Tab.0.bottom" timestamp="1599198776124">
+    <state x="137" y="26" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.738@0.0.1366.738" timestamp="1599301488632" />
+    <state x="323" y="0" key="CommitChangelistDialog2" timestamp="1599297634980">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="182" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1599198776124" />
-    <state width="1323" height="182" key="GridCell.Tab.0.center" timestamp="1599198776124">
+    <state x="323" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1599297634980" />
+    <state x="463" y="126" key="FileChooserDialogImpl" timestamp="1599205098594">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="182" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1599198776124" />
-    <state width="1323" height="182" key="GridCell.Tab.0.left" timestamp="1599198776124">
+    <state x="463" y="126" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1599205098594" />
+    <state width="1323" height="182" key="GridCell.Tab.0.bottom" timestamp="1599311175169">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="182" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1599198776124" />
-    <state width="1323" height="182" key="GridCell.Tab.0.right" timestamp="1599198776124">
+    <state width="1323" height="182" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1599311175169" />
+    <state width="1323" height="182" key="GridCell.Tab.0.center" timestamp="1599311175169">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="1323" height="182" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1599198776124" />
-    <state x="130" y="30" width="998" height="708" key="SettingsEditor" timestamp="1598843322242">
+    <state width="1323" height="182" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1599311175169" />
+    <state width="1323" height="182" key="GridCell.Tab.0.left" timestamp="1599311175169">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="130" y="30" width="998" height="708" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1598843322242" />
-    <state x="275" y="104" key="Vcs.Push.Dialog.v2" timestamp="1599197543857">
+    <state width="1323" height="182" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1599311175169" />
+    <state width="1323" height="182" key="GridCell.Tab.0.right" timestamp="1599311175169">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="275" y="104" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1599197543857" />
+    <state width="1323" height="182" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1599311175169" />
+    <state x="130" y="30" width="998" height="708" key="SettingsEditor" timestamp="1599303786178">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="130" y="30" width="998" height="708" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1599303786178" />
+    <state x="275" y="104" key="Vcs.Push.Dialog.v2" timestamp="1599297638574">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="275" y="104" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1599297638574" />
+    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1599209080613">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup/0.0.1366.738@0.0.1366.738" timestamp="1599209080613" />
   </component>
 </project>

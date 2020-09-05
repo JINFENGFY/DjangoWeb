@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.views import View
@@ -33,7 +33,37 @@ class DetailedTopic (View):
         topic=LearningContent.objects.get(lnum=topic_id)
         comment=topic.comment_set.values('commentcontent')
 
-        return render(request,'topic.html',{'topic':topic,'comment':comment})
+        log = LearningContent.objects.get (lnum=topic_id)
+        result = log.users_like.filter (username=request.user)
+        flag=False
+        if result:
+            flag=True
+        return render(request,'topic.html',{'topic':topic,'comment':comment,
+                                            'flag':flag})
+
+def likeor_not(request):
+    #接收参数
+    likeornot=request.GET.get('likeornot')
+    user=request.user
+    learninglog_id=request.GET.get('learninglog_id')
+
+    log = LearningContent.objects.get (lnum=learninglog_id)
+    result = log.users_like.filter(username=user)
+
+    if likeornot == "True":
+        if result:
+            return JsonResponse({'flag':False,})
+        else:
+            log.users_like.add(user)
+            log.like_count=log.like_count + 1
+            log.save()
+            return JsonResponse({'flag':True})
+    else:
+       log.users_like.remove(user)
+       log.like_count = log.like_count - 1
+       log.save ()
+       return JsonResponse ({'data':'dat'})
+
 
 # dispatch 为所有方法添加修饰器， 例如‘get’，为单一方法提供修饰器，也可以放在方法头
 @method_decorator (login_required (), name='dispatch')

@@ -15,6 +15,9 @@ urlpatterns =[
     #显示特定的读书笔记
     url(r'^topic/(?P<topic_id>\d+)/$',views.DetailedTopic.as_view(),name='topic'),
 
+    #处理点赞
+    url(r'^like/$',views.likeor_not,name='like'),
+
     #显示我的学习笔记
     url(r'^show_my_topics/(?P<page_num>\d+)/$',views.ShowMyTopics.as_view(),name='mytopic'),
 

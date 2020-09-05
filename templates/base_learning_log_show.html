@@ -75,10 +75,14 @@
         </div>
         <div class="order orderby-createtime" >
             <div class="list-group">
-                <div style="text-align: center">最新文章</div>
-                  {% for recentlog in Side_nav_recentlog %}
-                        <a href="#" class="list-group-item">{{ recentlog.title|split_str_cut:8 }}
-                        ({{ recentlog.createdTime|date:"Y-m-d"}})</a>
+                <div style="text-align: center">热点文章</div>
+                  {% for hotlog in Side_nav_hot %}
+                        <a href="#" class="list-group-item">{{ hotlog.title|split_str_cut:8 }}
+                        <span class="badge">{{ hotlog.like_count }}</span>
+                            {% if forloop.counter == 1 %}
+                                <span class="label label-danger">HOT</span>
+                            {% endif %}
+                        </a>
                   {% endfor %}
             </div>
         </div>
