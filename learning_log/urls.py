@@ -31,5 +31,9 @@ urlpatterns =[
     url(r'^del_topic/(?P<topic_id>\d+)/$',views.DelTopic.as_view(),name='deltopic'),
 
     #根据分类信息查找
-    url(r'orderby_category/(?P<category_id>\d+)/(?P<page_num>\d+)/$',views.OrCategory.as_view(),name='category')
+    url(r'orderby_category/(?P<category_id>\d+)/(?P<page_num>\d+)/$',views.OrCategory.as_view(),name='category'),
+
+    #根据热点文章查找
+    url (r'orderby_hotlog/(?P<hotlog_id>\d+)/$', views.OrHotlog.as_view (), name='hotlog'),
+
 ]

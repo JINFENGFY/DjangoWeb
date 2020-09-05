@@ -152,6 +152,16 @@ class OrCategory(View):
                                              'page_num':int(page_num),'category_id':category_id,
                                                     'cate_name':cate_name})
 
+class OrHotlog(View):
+    def get(self,request,hotlog_id):
+        topic=LearningContent.objects.get(lnum=hotlog_id)
+
+        log = LearningContent.objects.get (lnum=hotlog_id)
+        result = log.users_like.filter (username=request.user)
+        flag = False
+        if result:
+            flag = True
+        return render(request,'show_hotlog.html',{'topic':topic,'flag':flag})
 
 def MyPager(data,page_num,perpage):
     int_num = int (page_num)

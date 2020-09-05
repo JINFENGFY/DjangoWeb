@@ -1,0 +1,79 @@
+{% extends 'base_learning_log_show.html' %}
+{% load Custom_filters %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+            热点笔记详情
+        {% endblock %}
+    </title>
+</head>
+<body>
+    {% block main %}
+        <div class="blog-header">
+        <h1 class="blog-title">{{ topic.title }}</h1>
+        <p class="lead blog-categories">
+            {% for c in topic.categories.all %}
+                <span class="label label-success">{{ c|split_str:"3,"  }}</span>
+            {% endfor %}
+        </p>
+      </div>
+
+        <div class="blog-main">
+              <div class="blog-post">
+                <p class="blog-post-meta">{{ topic.createdTime|date:'Y-m-d h:m:s' }} by <a href="#">{{ topic.owner }}</a>\
+                    {% if user.is_authenticated %}
+                        {% if flag %}
+                            <button type="button" class="btn btn-success navbar-btn" id="btn-ajax" value="False" onclick="User_like()">已点赞</button>
+                            {% else %}
+                                <button type="button" class="btn btn-info navbar-btn" id="btn-ajax" value="True" onclick="User_like()">点赞</button>
+                        {% endif %}
+                    {% endif %}
+
+
+                    <span id="Spanmessige"></span>
+                </p>
+
+                <div>{{ topic.content|safe }}</div>
+              </div>
+        </div>
+            <hr/>
+            <a type="button" class="btn btn-primary" href="{% url 'learning_log:topics' 1 %}">返回</a>
+            <input type="hidden" value="{{ topic.lnum }}" id="hidden">
+
+    <script>
+        function User_like(){
+            //获取按钮的信息和对象
+            var btn=$("#btn-ajax")
+            var likeornot=btn.attr("value");
+            //获取文章id
+            var learninglog_id=$("#hidden").attr("value");
+            //提示信息框对象
+            var messige=$("#Spanmessige")
+            //后台处理
+            $.get('/like/',{'likeornot':likeornot,"learninglog_id":learninglog_id},function (result){
+                if(likeornot === "True"){
+                    btn.html('已点赞');
+                    btn.removeClass("btn-info");
+                    btn.addClass("btn-success");
+                    btn.attr("value","False");
+                }
+                else {
+                    messige.html("已经移除点赞");
+                    btn.html('点赞');
+                    btn.removeClass("btn-success");
+                    btn.addClass("btn-info");
+                    btn.attr("value","True");
+                    setTimeout(function (){
+                        messige.html('')
+                    },2000)
+                }
+            })
+        }
+    </script>
+    {% endblock %}
+
+</body>
+</html>
