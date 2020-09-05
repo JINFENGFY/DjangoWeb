@@ -34,10 +34,10 @@
               </div>
         </div>
             {% empty %}
-            没有一条项目！
+            <div class="alert alert-warning" role="alert">您还没有一条笔记</div>
         {% endfor %}
-
-        <div class="text-center">
+        {% if curpage_data %}
+            <div class="text-center">
             <div class="row">
                 <div class="col-xs-9">
                 <div class="text-center">
@@ -80,6 +80,10 @@
                 </div>
             </div>
         </div>
+            {% else %}
+            <a type="button" class="btn btn-primary" href="{% url 'learning_log:newtopic' %}">增加新笔记</a>
+        {% endif %}
+
 
     {% endblock %}
 
