@@ -4,7 +4,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>
+        {% block title %}
+            我的学习笔记
+        {% endblock %}
+    </title>
 </head>
 <body>
     {% block main %}

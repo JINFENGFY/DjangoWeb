@@ -4,7 +4,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>
+        {% block title %}
+            显示所有
+        {% endblock %}
+    </title>
 </head>
 <body>
     {% block main %}
