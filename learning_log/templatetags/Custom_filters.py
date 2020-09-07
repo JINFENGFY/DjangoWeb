@@ -21,3 +21,8 @@ def split_str_cut(value,args):
     result=str(value)
     length=len(result)
     return result[:lens]+'...'
+
+@register.filter
+def markdown(value):
+    import markdown
+    return markdown.markdown(value)
