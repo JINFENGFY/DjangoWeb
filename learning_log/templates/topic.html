@@ -1,5 +1,6 @@
 {% extends 'base_learning_log_show.html' %}
 {% load Custom_filters %}
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +13,9 @@
 </head>
 <body>
     {% block main %}
+        <link rel="stylesheet" href="{% static 'css/editormd.preview.css' %}">
+        <link rel="stylesheet" href="{% static 'css/default.css' %}">
+
         <div class="blog-header">
         <h1 class="blog-title">{{ topic.title }}</h1>
         <p class="lead blog-categories">
@@ -23,7 +27,7 @@
 
         <div class="blog-main">
               <div class="blog-post">
-                <p class="blog-post-meta">{{ topic.createdTime|date:'Y-m-d h:m:s' }} by <a href="#">{{ topic.owner }}</a>\
+                <p class="blog-post-meta">{{ topic.createdTime|date:'Y-m-d h:m:s' }} by <a href="#">{{ topic.owner }}</a>
                     {% if user.is_authenticated %}
                         {% if flag %}
                             <button type="button" class="btn btn-success navbar-btn" id="btn-ajax" value="False" onclick="User_like()">已点赞</button>
@@ -31,12 +35,17 @@
                                 <button type="button" class="btn btn-info navbar-btn" id="btn-ajax" value="True" onclick="User_like()">点赞</button>
                         {% endif %}
                     {% endif %}
-
-
                     <span id="Spanmessige"></span>
                 </p>
+                <div class="jumbotron">
+                    <div class="container">
+                        <div class="post-description markdown-body">
+                            <p>{{ topic.content|safe }}</p>
+                        </div>
+                    </div>
+                </div>
 
-                <div>{{ topic.content|safe }}</div>
+
               </div>
         </div>
             <hr/>

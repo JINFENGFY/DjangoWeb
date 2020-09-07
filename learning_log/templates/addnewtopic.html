@@ -16,18 +16,61 @@
 </head>
 <body>
     {% block main %}
-        <script type="text/javascript" src="/static/tiny_mce/tiny_mce.js"></script>
-        <script type="text/javascript" src="/static/tiny_mce/plugins/example/editor_plugin.js"></script>
-        <script>
-         tinyMCE.init({
-           {#'mode':'textareas',#}
-           {#'theme':'advanced',#}
-             selector: '#mytextarea',
-             toolbar: 'undo redo | styleselect | bold italic | link image',
-            'width':800,
-           'height':400,
-        })
-        </script>
+        <link rel="stylesheet" href="{% static 'css/editormd.preview.css' %}">
+        <script src="{% static 'js/prettify.min.js' %}"></script>
+        <script src="{% static 'js/marked.min.js' %}"></script>
+        <script src="{% static 'js/editormd.js' %}"></script>
+            <script type="text/javascript">
+                var testEditor;
+
+                $(function() {
+
+                    $.get('test.md', function(md){
+                        testEditor = editormd("test-editormd", {
+                            width: "90%",
+                            height: 740,　　　　　　　　　 // 依赖包的路径，按自己的司机配置
+                            path : '../lib/',　　　　　　　　　 // 主题颜色
+                            theme : "dark",
+                            previewTheme : "dark",
+                            editorTheme : "pastel-on-dark",
+                            markdown : md,
+                            codeFold : true,
+                            //syncScrolling : false,
+                            saveHTMLToTextarea : true,    // 保存 HTML 到 Textarea
+                            searchReplace : true,
+                            //watch : false,                // 关闭实时预览
+                            htmlDecode : "style,script,iframe|on*",            // 开启 HTML 标签解析，为了安全性，默认不开启
+                            //toolbar  : false,             //关闭工具栏
+                            //previewCodeHighlight : false, // 关闭预览 HTML 的代码块高亮，默认开启
+                            emoji : true,
+                            taskList : true,
+                            tocm            : true,         // Using [TOCM]
+                            tex : true,                   // 开启科学公式TeX语言支持，默认关闭
+                            flowChart : true,             // 开启流程图支持，默认关闭
+                            sequenceDiagram : true,       // 开启时序/序列图支持，默认关闭,
+                            //dialogLockScreen : false,   // 设置弹出层对话框不锁屏，全局通用，默认为true
+                            //dialogShowMask : false,     // 设置弹出层对话框显示透明遮罩层，全局通用，默认为true
+                            //dialogDraggable : false,    // 设置弹出层对话框不可拖动，全局通用，默认为true
+                            //dialogMaskOpacity : 0.4,    // 设置透明遮罩层的透明度，全局通用，默认值为0.1
+                            //dialogMaskBgColor : "#000", // 设置透明遮罩层的背景颜色，全局通用，默认为#fff　　　　　　　　　 # 下面上个配置项，是上传图片的配合项，点击上传图片时，不用自己编写代码，就直接可以提交，但要将imageUploadURL设置为自己的上传URL，而且要记得在后端图片上传的　　　　　　　　　 # 获取对象的键名：editormd-image-file，必须要使用这个键名获取，否则获取不到
+                            imageUpload : true,
+                            imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+                            imageUploadURL : "./php/upload.php",
+                            onload : function() {
+                                console.log('onload', this);
+                                //this.fullscreen();
+                                //this.unwatch();
+                                //this.watch().fullscreen();
+
+                                //this.setMarkdown("#PHP");
+                                //this.width("100%");
+                                //this.height(480);
+                                //this.resize("100%", 640);
+                            }
+                        });
+                    });
+                });
+            </script>
 
         <div class="blog-header text-center">
         <h1 class="blog-title">新笔记</h1>
@@ -35,34 +78,22 @@
 
         <form class="form-horizontal" action="{% url 'learning_log:newtopic' %}" method="post">
         {% csrf_token %}
-              <div class="form-group">
-                  <label class="col-sm-2 control-label">题目:</label>
-                  <div class="col-sm-10">
-                      {% bootstrap_form add_topic_form %}
-                  </div>
-              </div>
+        <div style="margin-left: 50px">
+            {{ add_topic_form.media }}
+            {% bootstrap_form add_topic_form %}
 
-              <div class="form-group">
-                <label for="mytextarea" class="col-sm-2 control-label">内容:</label>
-                <div class="col-sm-10">
-                  <textarea class="comment_content" name="comment_content" id="mytextarea"></textarea>
-                </div>
-              </div>
+            类型：
+            <p>
+                {% for category in categories %}
+                <input type="checkbox" name="category" value="{{ category.cnum }}">{{ category|split_str:"3," }}
+                {% endfor %}
+            </p>
 
-              <div class="form-group">
-                <label class="col-sm-2 control-label">类型：</label>
-                    <div class="col-sm-10" style="margin-top: 5px">
-                        {% for category in categories %}
-                            <input type="checkbox" name="category" value="{{ category.cnum }}">{{ category|split_str:"3," }}
-                        {% endfor %}
-                    </div>
-
-
-              </div>
-              <div class="col-sm-offset-2 col-sm-10">
-                 <button type="submit" class="btn btn-primary">提交</button>
-                 <a type="button" class="btn btn-primary" href="{% url 'learning_log:topics' 1 %}">返回</a>
-              </div>
+        </div>
+         <div class="col-sm-offset-2 col-sm-10">
+         <button type="submit" class="btn btn-primary">提交</button>
+             <a type="button" class="btn btn-primary" href="{% url 'learning_log:topics' 1 %}">返回</a>
+         </div>
         </form>
 
 
