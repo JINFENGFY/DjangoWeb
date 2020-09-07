@@ -4,13 +4,14 @@ from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.views import View
-from django.core.paginator import PageNotAnInteger,Paginator,EmptyPage
-
 from learning_log.models import Category
 from .forms import *
 from django.urls import reverse
-# Create your views here.
+from .functions import *
+import markdown
 
+
+# Create your views here.
 #显示主页
 class Index (View):
     def get(self,request):
@@ -32,6 +33,12 @@ class DetailedTopic (View):
     def get(self,request,topic_id):
         topic=LearningContent.objects.get(lnum=topic_id)
         comment=topic.comment_set.values('commentcontent')
+        topic.content=markdown.markdown(topic.content,
+                                        extensions=[
+                                            'markdown.extensions.extra',
+                                             'markdown.extensions.codehilite',
+                                             'markdown.extensions.toc',
+                                        ])
 
         log = LearningContent.objects.get (lnum=topic_id)
         result = log.users_like.filter (username=request.user)
@@ -64,7 +71,6 @@ def likeor_not(request):
        log.save ()
        return JsonResponse ({'data':'dat'})
 
-
 # dispatch 为所有方法添加修饰器， 例如‘get’，为单一方法提供修饰器，也可以放在方法头
 @method_decorator (login_required (), name='dispatch')
 class ShowMyTopics (View):
@@ -88,15 +94,12 @@ class NewTopic (View):
 
     def post(self,request):
         form=TopicForm(request.POST)
-
         #返回的值必需能转换为int类型
         category = request.POST.getlist("category")
-        content=request.POST.get('comment_content')
 
         if form.is_valid():
             add_topic=form.save(commit=False)
             add_topic.owner=request.user
-            add_topic.content=content
             add_topic.save()
 
             #一定要先保存主体后再进行对多对多关系得保存，不然主题还没有生成主键
@@ -118,18 +121,23 @@ class EditTopic (View):
 
     def post(self,request,topic_id):
         category = request.POST.getlist ("category")
-        content = request.POST.get ('comment_content')
-        topic = LearningContent.objects.get (lnum=topic_id)
+        topic1 = LearningContent.objects.get (lnum=topic_id)
 
         #先删除掉多对多关系数据，再存储
-        topic.categories.clear()
-
-        form=TopicForm(instance=topic,data=request.POST)
+        topic1.categories.clear()
+        form=TopicForm(instance=topic1,data=request.POST)
+        topic_img_old = topic1.content
+        print (topic_img_old)
         if form.is_valid():
             fo=form.save(commit=False)
-            fo.content=content
             fo.save()
             fo.categories.add (*category)
+
+            # 更新图片
+            topic2 = LearningContent.objects.get (lnum=topic_id)
+            topic_img_new =topic2.content
+            print(topic_img_new)
+            delimg(topic_img_new,topic_img_old)
 
             return HttpResponseRedirect(reverse('learning_log:topic',args=[topic_id]))
 
@@ -137,6 +145,8 @@ class EditTopic (View):
 class DelTopic (View):
     def get(self,request,topic_id):
         topic=LearningContent.objects.get(lnum=topic_id)
+        #物理删除图片
+        delimg(topic.content)
         topic.delete()
 
         return HttpResponseRedirect(reverse('learning_log:topics',args=[1]))
@@ -162,22 +172,5 @@ class OrHotlog(View):
         if result:
             flag = True
         return render(request,'show_hotlog.html',{'topic':topic,'flag':flag})
-
-def MyPager(data,page_num,perpage):
-    int_num = int (page_num)
-
-    # 创建分页器对象
-    pager = Paginator (data,perpage)
-
-    # 获取当前页数据
-    try:
-        curpage_data = pager.page (int_num)
-    except PageNotAnInteger:
-        curpage_data = pager.page (1)
-    # 输入越界
-    except EmptyPage:
-        curpage_data = pager.page (pager.num_pages)
-
-    return pager,curpage_data
 
 
