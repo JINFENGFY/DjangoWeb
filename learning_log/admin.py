@@ -18,5 +18,4 @@ class Learning_log_Admin(admin.ModelAdmin):
 
 # Register your models here.
 admin.site.register(Category),
-admin.site.register(Comment),
 admin.site.register(LearningContent,Learning_log_Admin),
