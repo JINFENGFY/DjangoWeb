@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from django.db import models
 from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
-
 from learning_log.models import LearningContent
 
 # Create your models here.
@@ -12,7 +11,6 @@ class Comment(MPTTModel):
     comnum=models.AutoField(primary_key=True)
     commentcontent=RichTextField(verbose_name=u'评论内容')
     created=models.DateTimeField(auto_now_add=True,verbose_name=u'创建时间')
-
     owner = models.ForeignKey (User, on_delete=models.CASCADE, verbose_name=u'所有者',
                                related_name='comments')
     learning_log = models.ForeignKey (LearningContent,on_delete=models.CASCADE,verbose_name=u'所有贴',
