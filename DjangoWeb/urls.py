@@ -32,6 +32,9 @@ urlpatterns = [
     #用户
     url(r'^users/',include(('users.urls','users'),namespace='users')),
 
+    #评论
+    url(r'comment/',include(('comment.urls','comment'),namespace='comment')),
+
     #富文本编辑器
     url(r'mdeditor/', include('mdeditor.urls')),
 
