@@ -44,10 +44,13 @@ INSTALLED_APPS = [
     'mdeditor',
     'haystack',
     'bootstrap3',
+    'ckeditor',
+    'mptt',
 
     #功能app
     'learning_log',
     'users',
+    'comment',
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -145,6 +148,11 @@ STATIC_URL = '/static/'
 MEDIA_URL='/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR,'static\\media')
 
+#设置ckeditor富文本编辑器的文件上传路径
+CKEDITOR_UPLOAD_PATH='/media/'
+CKEDITOR_JQUERY_URL='jquery-3.0.0.min.js'
+CKEDITOR_IMAGE_BACKEND = 'pillow'
+
 #设置登录跳转路径
 LOGIN_REDIRECT_URL='/topics/1'
 #设置退出路径
@@ -195,5 +203,36 @@ MDEDITOR_CONFIGS = {
     'watch': True,  # 实时预览
     'lineWrapping': False,  # 自动换行
     'lineNumbers': False  # 行号
+    }
+}
+
+#django-ckeditor
+CKEDITOR_CONFIGS = {
+    # django-ckeditor默认使用default配置
+    'default': {
+        # 编辑器宽度自适应
+        'width':'auto',
+        'height':'250px',
+        # tab键转换空格数
+        'tabSpaces': 4,
+        # 工具栏风格
+        'toolbar': 'Custom',
+        # 工具栏按钮
+        'toolbar_Custom': [
+            # 表情 代码块
+            ['Smiley', 'CodeSnippet'],
+            # 字体风格
+            ['Bold', 'Italic', 'Underline', 'RemoveFormat', 'Blockquote'],
+            # 字体颜色
+            ['TextColor', 'BGColor'],
+            # 链接
+            ['Link', 'Unlink'],
+            # 列表
+            ['NumberedList', 'BulletedList'],
+            # 最大化
+            ['Maximize']
+        ],
+        # 加入代码块插件
+        'extraPlugins': ','.join(['codesnippet']),
     }
 }
