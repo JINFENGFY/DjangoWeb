@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 from mdeditor.fields import MDTextField
+from mptt.models import MPTTModel
 
 # Create your models here.
 
@@ -34,12 +35,4 @@ class LearningContent(models.Model):
         except User.DoesNotExist:
             return u'学习笔记:%s' % (self.title,)
 
-#评论模型
-class Comment(models.Model):
-    comnum=models.AutoField(primary_key=True)
-    commentcontent=models.TextField(verbose_name=u'评论内容')
-    owner = models.ForeignKey (User, on_delete=models.CASCADE, verbose_name=u'所有者')
-    learning_log = models.ForeignKey (LearningContent,on_delete=models.CASCADE,verbose_name=u'所有贴')
 
-    def __str__(self):
-        return u'评论:%s--%s--%s' % (self.commentcontent, self.learning_log.title,self.owner)
