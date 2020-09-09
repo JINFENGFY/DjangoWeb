@@ -5,6 +5,8 @@ from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.views import View
 from learning_log.models import Category
+from comment.form import CommentForm
+from comment.models import Comment
 from .forms import *
 from django.urls import reverse
 from .functions import *
@@ -32,7 +34,6 @@ class Topic (View):
 class DetailedTopic (View):
     def get(self,request,topic_id):
         topic=LearningContent.objects.get(lnum=topic_id)
-        comment=topic.comment_set.values('commentcontent')
         topic.content=markdown.markdown(topic.content,
                                         extensions=[
                                             'markdown.extensions.extra',
@@ -42,11 +43,15 @@ class DetailedTopic (View):
 
         log = LearningContent.objects.get (lnum=topic_id)
         result = log.users_like.filter (username=request.user)
+        comment_form=CommentForm()
+        comment=Comment.objects.filter(learning_log=topic_id)
         flag=False
         if result:
             flag=True
-        return render(request,'topic.html',{'topic':topic,'comment':comment,
-                                            'flag':flag})
+        return render(request,'topic.html',{'topic':topic,
+                                            'flag':flag,
+                                            'comment_form':comment_form,
+                                            'comment':comment})
 
 def likeor_not(request):
     #接收参数
