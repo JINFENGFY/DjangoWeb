@@ -1,6 +1,7 @@
 {% extends 'base_learning_log_show.html' %}
 {% load Custom_filters %}
 {% load staticfiles %}
+{% load mptt_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,16 +18,16 @@
         <link rel="stylesheet" href="{% static 'css/default.css' %}">
 
         <div class="blog-header">
-        <h1 class="blog-title">{{ topic.title }}</h1>
-        <p class="lead blog-categories">
-            {% for c in topic.categories.all %}
-                <span class="label label-success">{{ c|split_str:"3,"  }}</span>
-            {% endfor %}
-        </p>
-      </div>
+            <h1 class="blog-title">{{ topic.title }}</h1>
+            <p class="lead blog-categories">
+                {% for c in topic.categories.all %}
+                    <span class="label label-success">{{ c|split_str:"3,"  }}</span>
+                {% endfor %}
+            </p>
+        </div>
 
         <div class="blog-main">
-              <div class="blog-post">
+            <div class="blog-post">
                 <p class="blog-post-meta">{{ topic.createdTime|date:'Y-m-d h:m:s' }} by <a href="#">{{ topic.owner }}</a>
                     {% if user.is_authenticated %}
                         {% if flag %}
@@ -44,37 +45,135 @@
                         </div>
                     </div>
                 </div>
-
-
               </div>
-        </div>
+
             <hr/>
-                {% if user.is_authenticated %}
-                    {% ifequal topic.owner request.user %}
-                        <div class="btn-group" role="group" aria-label="...">
-                          <a type="button" class="btn btn-primary" href="{% url 'learning_log:edittopic' topic.lnum %}">修改</a>
-                          <a type="button" class="btn btn-primary" href="{% url 'learning_log:deltopic' topic.lnum %}">删除</a>
-                          <a type="button" class="btn btn-primary" href="{% url 'learning_log:topics' 1 %}">返回</a>
-                        </div>
-                        {% else %}
-                            <a type="button" class="btn btn-primary" href="{% url 'learning_log:topics' 1 %}">返回</a>
-                    {% endifequal %}
+            {% if user.is_authenticated %}
+                {% ifequal topic.owner request.user %}
+                    <div class="btn-group" role="group" aria-label="...">
+                      <a type="button" class="btn btn-primary" href="{% url 'learning_log:edittopic' topic.lnum %}">修改</a>
+                      <a type="button" class="btn btn-primary" href="{% url 'learning_log:deltopic' topic.lnum %}">删除</a>
+                      <a type="button" class="btn btn-primary" href="{% url 'learning_log:topics' 1 %}">返回</a>
+                    </div>
                     {% else %}
                         <a type="button" class="btn btn-primary" href="{% url 'learning_log:topics' 1 %}">返回</a>
-                {% endif %}
-        <input type="hidden" value="{{ topic.lnum }}" id="hidden">
+                {% endifequal %}
+                {% else %}
+                    <a type="button" class="btn btn-primary" href="{% url 'learning_log:topics' 1 %}">返回</a>
+            {% endif %}
+            <input type="hidden" value="{{ topic.lnum }}" id="hidden">
+
+            <hr><!-- 发表评论-->
+            {% if user.is_authenticated %}
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">评论一下吧</h3>
+                  </div>
+                  <div class="panel-body">
+                    <form action="." method="POST">
+                        {% csrf_token %}
+                        <div>
+                            {{ comment_form.media }}
+                            {{ comment_form.commentcontent }}
+                        </div>
+                    </form>
+                    <button class="btn btn-primary" type="submit" onclick="first_comment({{ topic.lnum }})">发送</button>
+
+                  </div>
+                </div>
+                {% else %}
+                <div class="alert alert-warning" role="alert">
+                    还没有登录？<a href="{% url 'users:login' %}">登录</a>后再评论吧！
+                </div>
+            {% endif %}
+
+            <!-- 显示评论-->
+            <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">共有{{ comment.count }}条评论</h3>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+                {% recursetree comment %}
+                    {% with comment=node %}
+                        <div class="{% if comment.reply_to %} offset-1 col-11 {% else %} col-12 {% endif %} " id="comment_elem_{{ comment.comnum }}">
+                            <hr>
+                            <div class="alert alert-info" role="alert">
+                                <div class="panel panel-default">
+                                  <div class="panel-heading">
+                                      {{ comment.owner }}
+                                      {% if comment.reply_to %}
+                                            <span class="glyphicon glyphicon-arrow-right"></span>
+                                            {{ comment.reply_to }}
+                                      {% endif %}
+                                  </div>
+                                  <div class="panel-body">
+                                      <div>
+                                          {{ comment.commentcontent|safe}}
+                                      </div>
+                                      <div>
+                                          {{ comment.created|date:"Y-m-d H:i"}}
+                                          {% if user.is_authenticated %}
+                                                <button type="button"
+                                                        class="btn btn-info btn-sm text-muted"
+                                                        onclick="load_modal({{ topic.lnum }}, {{ comment.comnum }})"
+                                                >
+                                                    回复
+                                                </button>
+                                            {% else %}
+                                                回复请
+                                                <a class="btn btn-info btn-sm text-muted"
+                                                    href="{% url 'users:login' %}"
+                                                >登录</a>
+                                          {% endif %}
+                                      </div>
+
+                                      <!-- 对话框-->
+                                      <div class="modal fade"
+                                                 id="comment_{{ comment.comnum }}"
+                                                 tabindex="-1"
+                                                 role="dialog"
+                                                 aria-labelledby="CommentModalCenter"
+                                                 aria-hidden="true"
+                                            >
+                                                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                                    <div class="modal-content" style="height: 480px">
+                                                        <div class="modal-header">
+                                                            <button class="close" data-dismiss="modal">&times;</button>
+                                                            <h5 class="modal-title" id="exampleModalCenterTitle">回复 {{ comment.owner }}：</h5>
+                                                        </div>
+                                                        <div class="modal-body" id="modal_body_{{ comment.comnum }}"></div>
+                                                    </div>
+                                                </div>
+                                      </div>
+
+                                      {% if not comment.is_leaf_node %}
+                                          <div class="children">
+                                              {{ children }}
+                                          </div>
+                                      {% endif %}
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endwith %}
+                {% endrecursetree %}
+            </div>
+          </div>
+        </div>
+        </div>
 
     <script>
         function User_like(){
             //获取按钮的信息和对象
-            var btn=$("#btn-ajax")
-            var likeornot=btn.attr("value");
+            let btn=$("#btn-ajax")
+            let likeornot=btn.attr("value");
             //获取文章id
-            var learninglog_id=$("#hidden").attr("value");
+            let learninglog_id=$("#hidden").attr("value");
             //提示信息框对象
-            var messige=$("#Spanmessige")
+            let messige=$("#Spanmessige")
             //后台处理
-            $.get('/like/',{'likeornot':likeornot,"learninglog_id":learninglog_id},function (result){
+            $.get('/like/',{'likeornot':likeornot,"learninglog_id":learninglog_id},function (){
                 if(likeornot === "True"){
                     btn.html('已点赞');
                     btn.removeClass("btn-info");
@@ -93,6 +192,32 @@
                 }
             })
         }
+
+        function first_comment(topic_id){
+            //从ckeditor中获取数据
+            let csrf = $('input[name="csrfmiddlewaretoken"]').val();
+            let content=CKEDITOR.instances['id_commentcontent'].getData();
+            //用ajax与后端交换数据
+            $.post('/comment/log_comment/' + topic_id + '/',{'commentcontent': content,'csrfmiddlewaretoken': csrf},function (result){
+                if(result === 'success'){
+                   parent.location.reload();
+                }
+            })
+        }
+
+        function load_modal(topic_lnum , comment_comnum) {
+            let modal_body = '#modal_body_' + comment_comnum;
+            let modal_id = '#comment_' + comment_comnum;
+            // 加载编辑器
+            if ($(modal_body).children().length === 0) {
+                let content = '<iframe src="/comment/log_comment/' + topic_lnum + '/' + comment_comnum +'"'+' frameborder="0" style="width: 100%; height: 400px;" id="iframe_'+comment_comnum+'"></iframe>';
+                $(modal_body).append(content);
+            }
+
+            $(modal_id).modal('show');
+        }
+
+
     </script>
     {% endblock %}
 
