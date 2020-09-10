@@ -1,0 +1,33 @@
+{% extends 'base_learning_log_show.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+            消息处理
+        {% endblock %}
+    </title>
+</head>
+<body>
+    {% block main %}
+        <div class="container-fluid" style="margin-top: 20px">
+            <p>
+                <a type="buttom" class="btn btn-primary" href="{% url 'notice:update' %}">清空所有同通知</a>
+            </p>
+            <div id="list-item">
+                <ul class="list-group">
+                  {% for notice in notices %}
+                    <li class="list-group-item">
+                        <a href="{% url 'notice:update' %}?topic_id={{ notice.target.lnum }}&notice_id={{ notice.id }}"
+                        target="=_blank">
+                            {{ notice.actor }}在{{ notice.target }}{{ notice.verb }}{{ notice.timestamp|date:"Y/m/d H:i" }}
+                        </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+            </div>
+        </div>
+    {% endblock %}
+</body>
+</html>
