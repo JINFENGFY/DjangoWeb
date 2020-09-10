@@ -20,8 +20,8 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
-
 from DjangoWeb import settings
+import notifications.urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -39,9 +39,13 @@ urlpatterns = [
     url(r'mdeditor/', include('mdeditor.urls')),
 
     #转到搜索引擎内部
-    url(r'search/',include('haystack.urls'))
+    url(r'search/',include('haystack.urls')),
 
+    #消息通知
+    url(r'inbox/notifications/',include(notifications.urls,namespace='notifications')),
 
+    #消息通知处理
+    url(r'notice/',include(('notice.urls','notice'),namespace='notice')),
 ]
 
 

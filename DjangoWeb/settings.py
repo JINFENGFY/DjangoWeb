@@ -46,11 +46,13 @@ INSTALLED_APPS = [
     'bootstrap3',
     'ckeditor',
     'mptt',
+    'notifications',
 
     #功能app
     'learning_log',
     'users',
     'comment',
+    'notice',
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
