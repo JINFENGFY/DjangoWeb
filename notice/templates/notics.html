@@ -21,7 +21,8 @@
                     <li class="list-group-item">
                         <a href="{% url 'notice:update' %}?topic_id={{ notice.target.lnum }}&notice_id={{ notice.id }}#comment_elem_{{ notice.action_object.comnum }}"
                         target="=_blank">
-                            {{ notice.actor }}在{{ notice.target }}{{ notice.verb }}{{ notice.timestamp|date:"Y/m/d H:i" }}
+                            <div class="alert alert-success" role="alert">{{ notice.actor }}在{{ notice.target }}中{{ notice.verb }}{{ notice.timestamp|date:"Y/m/d H:i" }}</div>
+
                         </a>
                     </li>
                   {% endfor %}
