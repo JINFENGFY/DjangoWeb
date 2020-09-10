@@ -41,4 +41,4 @@ class CommentNoticeUpdateView(View):
         # 更新全部通知
         else:
             request.user.notifications.mark_all_as_read()
-            return redirect('notice:list')
+            return redirect(reverse('learning_log:topics',args=[1]))
