@@ -1,11 +1,11 @@
 #coding=utf-8
-from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.views import View
 from django.views.generic import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from learning_log.models import LearningContent
+from notifications.models import *
 
 
 class CommentNoticeListView(LoginRequiredMixin, ListView):
@@ -28,6 +28,10 @@ class CommentNoticeUpdateView(View):
     def get(self, request):
         # 获取未读消息
         notice_id = request.GET.get('notice_id')
+
+        #删除数据库中的已读记录
+        Notification.objects.filter(unread=0).delete()
+
         # 更新单条通知
         if notice_id:
             learning_log = LearningContent.objects.get(lnum=request.GET.get('topic_id'))
