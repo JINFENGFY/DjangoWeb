@@ -40,20 +40,7 @@
 
 
           <div class="navbar-right">
-              {% if user.is_authenticated %}
-                        <p class="navbar-text">你好,{{ user.username }}</p>
-                        <button type="button" class="btn btn-default navbar-btn">
-                            <a href="{% url 'users:loginout' %}">退出</a>
-                        </button>
-                        {% else %}
-                            <button type="button" class="btn btn-default navbar-btn">
-                              <a href="{% url 'users:login' %}">登录</a>
-                            </button>
-
-                            <button type="button" class="btn btn-default navbar-btn">
-                              <a href="{% url 'users:register' %}">注册</a>
-                            </button>
-              {% endif %}
+              {% include 'navbar_right.html' %}
           </div>
 
       </div>
