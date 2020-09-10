@@ -4,7 +4,7 @@
 }
 
 body {
-    margin-top: 50px;
+    margin-top: 61px;
 }
 
 body,html {
@@ -42,4 +42,42 @@ a:hover {
 
 .form-control {
     width: 50%;
+}
+
+.dropdown-menu>li a {
+    height: 35px;
+    text-align: left;
+    font-size: 16px;
+}
+
+.dropdown-menu>li>a>span {
+    padding-top: 0;
+    margin-bottom: 2px;
+    margin-left: 20px;
+    background: red;
+}
+
+.dropdown-menu>.divider {
+    margin-bottom: 1px;
+    margin-top: 1px;
+}
+
+*:before,
+*:after{
+    box-sizing: border-box;
+}
+
+.sidebar__inner{
+    transform: translate(0, 0);
+    transform: translate3d(0, 0, 0);
+    will-change: position, transform;
+}
+
+#sidebar {
+    float: right;
+    color: #c7abf1;
+    position: relative;
+    will-change: min-height;
+    padding-left: 0;
+    padding-right: 30px;
 }
