@@ -1,7 +1,6 @@
-from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, get_object_or_404
-from django.urls import reverse
-from django.views.decorators.csrf import csrf_exempt
+from notifications.signals import notify
 
 from .models import Comment
 from  learning_log.models import LearningContent
@@ -33,9 +32,27 @@ class ShowComments(View):
                 #记录超过三级的回复的正真回复人
                 new_comment.reply_to=parent_comment.owner
                 new_comment.save()
+                #给被评论用户发送通知
+                if not parent_comment.owner.is_superuser and not parent_comment.owner ==request.user:
+                    notify.send(
+                        request.user,
+                        recipient=parent_comment.owner,
+                        verb='恢复了你',
+                        target=learning_log,
+                        action_object=new_comment,
+                    )
                 return HttpResponse('success')
 
             new_comment.save()
+            # 给管理员发送通知
+            if not request.user == learning_log.owner:
+                notify.send (
+                    request.user,
+                    recipient=learning_log.owner,
+                    verb='回复了你',
+                    target=learning_log,
+                    action_object=new_comment,
+                )
             return HttpResponse('success')
         else:
             return HttpResponse('表单有错误')
