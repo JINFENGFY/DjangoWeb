@@ -17,6 +17,7 @@
       <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
     <![endif]-->
+
   </head>
   <nav class="nav navbar-default navbar-fixed-top navbar-inverse">
       <div class="container-fluid">
@@ -44,35 +45,43 @@
   </nav>
   <body>
     <div class="container-fluid container_full">
-    <div class="col-sm-9 col-xs-12" name="left-container">
+    <div class="row">
+        <div class="col-xs-9" id="content">
         {% block main %}
 
         {% endblock %}
-    </div>
-    <div class="col-sm-3 hidden-xs" name="right-container">
-        <div class="order orderby-category" >
-            <div class="list-group">
-                <div style="text-align: center">热门分类</div>
-                  {% for category in Side_nav_categories %}
-                        <a href="{% url 'learning_log:category' category.categories 1 %}" class="list-group-item">{{ category.categories__category }}
-                        <span class="badge">{{ category.c }}</span></a>
-                  {% endfor %}
+        </div>
+
+        <div id="sidebar" class="sidebar col-xs-3">
+        <div class="sidebar__inner ">
+            <div class="order orderby-category" >
+                <div class="list-group">
+                    <div style="text-align: center">热门分类</div>
+                      {% for category in Side_nav_categories %}
+                            <a href="{% url 'learning_log:category' category.categories 1 %}" class="list-group-item">{{ category.categories__category }}
+                            <span class="badge">{{ category.c }}</span></a>
+                      {% endfor %}
+                </div>
+            </div>
+            <div class="order orderby-createtime" >
+                <div class="list-group">
+                    <div style="text-align: center">热点文章</div>
+                      {% for hotlog in Side_nav_hot %}
+                            <a href="{% url 'learning_log:hotlog' hotlog.lnum %}" class="list-group-item">{{ hotlog.title|split_str_cut:8 }}
+                            <span class="badge">{{ hotlog.like_count }}</span>
+                                {% if forloop.counter == 1 %}
+                                    <span class="label label-danger">HOT</span>
+                                {% endif %}
+                            </a>
+                      {% endfor %}
+                </div>
             </div>
         </div>
-        <div class="order orderby-createtime" >
-            <div class="list-group">
-                <div style="text-align: center">热点文章</div>
-                  {% for hotlog in Side_nav_hot %}
-                        <a href="{% url 'learning_log:hotlog' hotlog.lnum %}" class="list-group-item">{{ hotlog.title|split_str_cut:8 }}
-                        <span class="badge">{{ hotlog.like_count }}</span>
-                            {% if forloop.counter == 1 %}
-                                <span class="label label-danger">HOT</span>
-                            {% endif %}
-                        </a>
-                  {% endfor %}
-            </div>
-        </div>
     </div>
+    </div>
+
+
+
     <div class="footerpush"></div>
     </div>
 
@@ -82,5 +91,16 @@
     <script src="/static/jquery-3.0.0.min.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
     {% include 'back_to_top_button.html' %}
+
+    <script src="{% static 'js/jquery.sticky-sidebar.min.js' %}"></script>
+    <script type="text/javascript">
+        $('#sidebar').stickySidebar({
+            containerSelector: '.container-fluid',
+            innerWrapperClass: 'sidebar__inner',
+            topSpacing: 50,
+            bottomSpacing: 20,
+        });
+    </script>
+
   </body>
 </html>
