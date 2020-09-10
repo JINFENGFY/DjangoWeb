@@ -1,0 +1,51 @@
+{% load notifications_tags %}
+{% notifications_unread as unread_count %}
+
+{% if user.is_authenticated %}
+                        <p class="navbar-text">
+                            <div class="btn-group " role="group" aria-label="...">
+                                  <div class="btn-group" role="group">
+                                      <button type="button" class="btn btn-default navbar-btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            {% if unread_count %}
+                                              <svg viewBox="0 0 8 8"
+                                                     width="8px"
+                                                     height="8px">
+                                                    <circle cx="4"
+                                                            cy="4"
+                                                            r="4"
+                                                            fill="#ff6b6b"
+                                                    ></circle>
+                                              </svg>
+                                          {% endif %}
+                                            你好，{{ user.username }}
+                                            <span class="caret"></span>
+                                      </button>
+                                      <ul class="dropdown-menu">
+                                        <li class="{% if not unread_count %} disabled {% endif %}">
+                                            <a href="{% url 'notice:list' %}">
+                                                通知
+                                                {% if unread_count %}
+                                                    <span class="badge">{{ unread_count }}</span>
+                                                {% endif %}
+                                            </a>
+                                        </li>
+                                        <li role="separator" class="divider"></li>
+                                        <li>
+                                            <a href="#">退出登录</a>
+                                        </li>
+                                      </ul>
+                                  </div>
+
+                                  <button type="button" class="btn btn-default navbar-btn">
+                                    <a href="{% url 'users:loginout' %}">退出</a>
+                                  </button>
+                            </div>
+                        {% else %}
+                            <button type="button" class="btn btn-default navbar-btn">
+                              <a href="{% url 'users:login' %}">登录</a>
+                            </button>
+
+                            <button type="button" class="btn btn-default navbar-btn">
+                              <a href="{% url 'users:register' %}">注册</a>
+                            </button>
+              {% endif %}
