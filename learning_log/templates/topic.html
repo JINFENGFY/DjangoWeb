@@ -205,7 +205,7 @@
             //用ajax与后端交换数据
             $.post('/comment/log_comment/' + topic_id + '/',{'commentcontent': content,'csrfmiddlewaretoken': csrf},function (result){
                 if(result === 'success'){
-                   parent.location.reload();
+                   window.location.reload();
                 }
             })
         }
@@ -221,6 +221,12 @@
 
             $(modal_id).modal('show');
         }
+
+        /**function post_reply_and_show_it(new_comment_id){
+            let next_url="{% url 'learning_log:topic' topic.lnum %}";
+            next_url=next_url.charAt(next_url.length-1) == '/' ? next_url.slice(0,1) : next_url;
+            window.location.replace(next_url+"#comment_elem_"+new_comment_id)
+        }**/
 
 
     </script>
