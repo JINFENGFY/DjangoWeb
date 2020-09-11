@@ -1,7 +1,10 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.utils.decorators import method_decorator
 from django.views import View
 from django.urls import reverse
 from .forms import MoreInfoFrom
@@ -20,9 +23,6 @@ class Register (View):
         form_user=UserCreationForm(data=request.POST)
         form_info=MoreInfoFrom(data=request.POST)
 
-        print(form_user.is_valid())
-        print(form_info.is_valid())
-
         if form_user.is_valid() and form_info.is_valid():
             new_user=form_user.save()
             more_info=form_info.save(commit=False)
@@ -36,5 +36,12 @@ class Register (View):
             return HttpResponseRedirect(reverse('learning_log:topics',args=[1]))
 
         self.flag=False
-
         return render(request,'register.html',{'form1':self.form1,'form2':self.form2,'flag':self.flag})
+
+@method_decorator (login_required (), name='dispatch')
+class UserDel(View):
+    def get(self,request):
+        user=User.objects.get(id=request.user.id)
+        logout(request)
+        user.delete()
+        return HttpResponseRedirect(reverse('learning_log:index'))
