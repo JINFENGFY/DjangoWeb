@@ -1,7 +1,5 @@
 #coding=utf-8
 from django import forms
-from mdeditor.fields import MDTextFormField
-
 from .models import LearningContent
 
 class TopicForm(forms.ModelForm):
