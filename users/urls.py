@@ -15,5 +15,8 @@ urlpatterns =[
     url(r'^login/$',LoginView.as_view(template_name='login.html'),name='login'),
 
     #退出
-    url(r'loginout/$',LogoutView.as_view(),name='loginout')
+    url(r'loginout/$',LogoutView.as_view(),name='loginout'),
+
+    #删除用户
+    url(r'userdel/$',views.UserDel.as_view(),name='userdel'),
 ]
