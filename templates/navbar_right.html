@@ -1,7 +1,8 @@
 {% load notifications_tags %}
 {% notifications_unread as unread_count %}
 {% load staticfiles %}
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{% static 'css/hsycmsAlert.css' %}">
 {% if user.is_authenticated %}
     <p class="navbar-text">
         <div class="btn-group " role="group" aria-label="...">
@@ -33,7 +34,13 @@
                     </li>
                     <li role="separator" class="divider"></li>
                     <li>
-                        <a href="#">退出登录</a>
+                        <a href="{% url 'users:loginout' %}">退出登录</a>
+                    </li>
+                    <li role="separator" class="divider"></li>
+                    <li>
+                        <a type="button" href="#" onclick="confirm()" id="deluser"><span id="in_a_link" style="background:none;
+                                                                                                                display: inline-block;
+                                                                                                                margin-left: 0">删除用户</span></a>
                     </li>
                   </ul>
               </div>
@@ -51,11 +58,39 @@
           <a href="{% url 'users:register' %}">注册</a>
         </button>
 {% endif %}
+
+ <!--询问弹窗-->
+ <div class="hsycms-model-mask" id="mask-confirm"></div>
+ <div class="hsycms-model hsycms-model-confirm" id="confirm">
+   <div class="hscysm-model-title">温馨提示</div>
+   <div class="hsycms-model-text">确定要操作？</div>
+   <div class="hsycms-model-btn">
+    <button type="button" class="cancel">取消</button>
+    <button type="button" class="ok">确定</button>
+   </div>
+ </div>
+
 <script src="{% static 'jquery-3.0.0.min.js' %}"></script>
+<script src="{% static 'js/hsycmsAlert.js' %}"></script>
 <script>
     let flag=parseInt($("#checka").val())
     let a=$("#noticea")
     if(!flag){
         a.removeAttr("href")
     }
+
+    //询问弹窗
+   function confirm(){
+      hsycms.confirm('confirm','您即将清除用户数据，确定这样做吗？',
+         function(){
+            hsycms.success('success','点击了确定');
+            $("#deluser").attr('href','{% url 'users:userdel' %}');
+            $("#in_a_link").click();
+         },
+        function(){
+            hsycms.error('error','点击了取消');
+         },
+      )
+   }
+
 </script>
