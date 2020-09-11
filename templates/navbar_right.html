@@ -32,6 +32,9 @@
                             {% endif %}
                         </a>
                     </li>
+                    <li>
+                        <a href="{% url 'users:userhome' user.id %}">我的主页</a>
+                    </li>
                     <li role="separator" class="divider"></li>
                     <li>
                         <a href="{% url 'users:loginout' %}">退出登录</a>
