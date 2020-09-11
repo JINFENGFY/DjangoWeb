@@ -16,6 +16,7 @@
     {% block main %}
         <link rel="stylesheet" href="{% static 'css/editormd.preview.css' %}">
         <link rel="stylesheet" href="{% static 'css/default.css' %}">
+        <link rel="stylesheet" href="{% static 'css/hsycmsAlert.css' %}">
 
         <div class="blog-header">
             <h1 class="blog-title">{{ topic.title }}</h1>
@@ -78,7 +79,7 @@
                 {% ifequal topic.owner request.user %}
                     <div class="btn-group" role="group" aria-label="...">
                       <a type="button" class="btn btn-primary" href="{% url 'learning_log:edittopic' topic.lnum %}">修改</a>
-                      <a type="button" class="btn btn-primary" href="{% url 'learning_log:deltopic' topic.lnum %}">删除</a>
+                      <a type="button" class="btn btn-primary" href="#" id="delpost" onclick="confirm()"><span id="in_link">删除</span></a>
                       <a type="button" class="btn btn-primary" href="{% url 'learning_log:topics' 1 %}">返回</a>
                     </div>
                     {% else %}
@@ -168,6 +169,17 @@
             </div>
         </div>
 
+         <!--询问弹窗-->
+         <div class="hsycms-model-mask" id="mask-confirm"></div>
+         <div class="hsycms-model hsycms-model-confirm" id="confirm">
+           <div class="hscysm-model-title">温馨提示</div>
+           <div class="hsycms-model-text">确定要操作？</div>
+           <div class="hsycms-model-btn">
+            <button type="button" class="cancel">取消</button>
+            <button type="button" class="ok">确定</button>
+           </div>
+         </div>
+
     <script>
         function User_like(){
             //获取按钮的信息和对象
@@ -222,13 +234,19 @@
             $(modal_id).modal('show');
         }
 
-        /**function post_reply_and_show_it(new_comment_id){
-            let next_url="{% url 'learning_log:topic' topic.lnum %}";
-            next_url=next_url.charAt(next_url.length-1) == '/' ? next_url.slice(0,1) : next_url;
-            window.location.replace(next_url+"#comment_elem_"+new_comment_id)
-        }**/
-
-
+       //询问弹窗
+       function confirm(){
+          hsycms.confirm('confirm','您即将删除该文章，确定吗？',
+             function(){
+                hsycms.success('success','点击了确定');
+                $("#delpost").attr('href','{% url 'learning_log:deltopic' topic.lnum %}');
+                $("#in_link").click();
+             },
+            function(){
+                hsycms.error('error','点击了取消');
+             },
+          )
+       }
     </script>
     {% endblock %}
 
