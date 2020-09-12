@@ -19,4 +19,13 @@ urlpatterns =[
 
     #删除用户
     url(r'userdel/$',views.UserDel.as_view(),name='userdel'),
+
+    #访问用户首页
+    url(r'userhomepage/(?P<user_id>\d+)/$',views.UserHome.as_view(),name='userhome'),
+
+    #处理用户点赞
+    url(r'^userlike/$',views.userlike,name='userlike'),
+
+    #处理用户关注
+    url(r'^follow/$',views.userfollow,name='follow'),
 ]

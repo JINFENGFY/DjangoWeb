@@ -1,13 +1,16 @@
+import pytz
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.views import View
 from django.urls import reverse
+from datetime import datetime
 from .forms import MoreInfoFrom
+from .models import User_more_info
 
 
 # Create your views here.
@@ -45,3 +48,66 @@ class UserDel(View):
         logout(request)
         user.delete()
         return HttpResponseRedirect(reverse('learning_log:index'))
+
+
+class UserHome(View):
+    def get(self,request,user_id):
+        user_page=User.objects.get(id=user_id)
+        user_info=User_more_info.objects.get(user_id=user_id)
+        result1=user_info.appreciate.filter(username=request.user)
+        result2 = user_info.follow.filter (username=request.user)
+        flag1=False
+        if result1:
+            flag1=True
+        flag2=False
+        if result2:
+            flag2=True
+
+        years=int((datetime.now().replace(tzinfo=pytz.timezone('UTC'))-user_info.usercreated).total_seconds()/86400+1)
+        return render(request,'user_home_page.html',{'user_page':user_page,'user_info':user_info,'years':years,'flag1':flag1,'flag2':flag2})
+
+
+def userlike(request):
+    # 接收参数
+    dianzan = request.GET.get ('dianzan')
+    user = request.user
+    homepage_owner = request.GET.get ('homepage_owner')
+
+    homepage_ownerobj = User_more_info.objects.get (user_id=homepage_owner)
+    result = homepage_ownerobj.appreciate.filter (username=user)
+
+    if dianzan == "True":
+        if result:
+            return HttpResponse()
+        else:
+            homepage_ownerobj.appreciate.add (user)
+            homepage_ownerobj.appreciate_count = homepage_ownerobj.appreciate_count + 1
+            homepage_ownerobj.save ()
+            return HttpResponse()
+    else:
+        homepage_ownerobj.appreciate.remove (user)
+        homepage_ownerobj.appreciate_count = homepage_ownerobj.appreciate_count - 1
+        homepage_ownerobj.save ()
+        return HttpResponse()
+
+
+def userfollow(request):
+    # 接收参数
+    guanzhu = request.GET.get ('guanzhu')
+    user = request.user
+    homepage_owner = request.GET.get ('homepage_owner')
+
+    homepage_ownerobj = User_more_info.objects.get (user_id=homepage_owner)
+    result = homepage_ownerobj.follow.filter (username=user)
+
+    if guanzhu == "True":
+        if result:
+            return HttpResponse()
+        else:
+            homepage_ownerobj.follow.add (user)
+            homepage_ownerobj.save ()
+            return HttpResponse()
+    else:
+        homepage_ownerobj.follow.remove (user)
+        homepage_ownerobj.save ()
+        return HttpResponse()
