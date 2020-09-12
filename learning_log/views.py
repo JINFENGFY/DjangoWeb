@@ -4,6 +4,8 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.views import View
+from notifications.signals import notify
+from users.models import User_more_info
 from learning_log.models import Category
 from comment.form import CommentForm
 from comment.models import Comment
@@ -106,6 +108,17 @@ class NewTopic (View):
             #一定要先保存主体后再进行对多对多关系得保存，不然主题还没有生成主键
             #参考解决https://blog.csdn.net/fengyu09/article/details/17434795
             add_topic.categories.add (*category)
+
+            follows=User_more_info.objects.get(user=request.user.id).follow.all()
+            learning_log=LearningContent.objects.filter(owner=26).order_by('-createdTime')[0]
+            #发送新文章提醒给关注该用户的用户
+            notify.send (
+                request.user,
+                recipient=follows,
+                verb='{0}发表了一篇新文章《{1}》,快去看看把'.format(request.user,add_topic.title),
+                target=learning_log,
+                description='new_log',
+            )
             return HttpResponseRedirect(reverse('learning_log:topics',args=[1]))
 
 @method_decorator(login_required(),name='dispatch')
