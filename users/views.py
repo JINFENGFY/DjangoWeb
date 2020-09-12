@@ -72,18 +72,13 @@ def userlike(request):
     dianzan = request.GET.get ('dianzan')
     user = request.user
     homepage_owner = request.GET.get ('homepage_owner')
-
     homepage_ownerobj = User_more_info.objects.get (user_id=homepage_owner)
-    result = homepage_ownerobj.appreciate.filter (username=user)
 
     if dianzan == "True":
-        if result:
-            return HttpResponse()
-        else:
-            homepage_ownerobj.appreciate.add (user)
-            homepage_ownerobj.appreciate_count = homepage_ownerobj.appreciate_count + 1
-            homepage_ownerobj.save ()
-            return HttpResponse()
+        homepage_ownerobj.appreciate.add (user)
+        homepage_ownerobj.appreciate_count = homepage_ownerobj.appreciate_count + 1
+        homepage_ownerobj.save ()
+        return HttpResponse()
     else:
         homepage_ownerobj.appreciate.remove (user)
         homepage_ownerobj.appreciate_count = homepage_ownerobj.appreciate_count - 1
@@ -101,12 +96,9 @@ def userfollow(request):
     result = homepage_ownerobj.follow.filter (username=user)
 
     if guanzhu == "True":
-        if result:
-            return HttpResponse()
-        else:
-            homepage_ownerobj.follow.add (user)
-            homepage_ownerobj.save ()
-            return HttpResponse()
+        homepage_ownerobj.follow.add (user)
+        homepage_ownerobj.save ()
+        return HttpResponse()
     else:
         homepage_ownerobj.follow.remove (user)
         homepage_ownerobj.save ()

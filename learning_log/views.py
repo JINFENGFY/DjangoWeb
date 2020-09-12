@@ -60,16 +60,12 @@ def likeor_not(request):
     learninglog_id=request.GET.get('learninglog_id')
 
     log = LearningContent.objects.get (lnum=learninglog_id)
-    result = log.users_like.filter(username=user)
 
     if likeornot == "True":
-        if result:
-            return HttpResponse()
-        else:
-            log.users_like.add(user)
-            log.like_count=log.like_count + 1
-            log.save()
-            return HttpResponse()
+        log.users_like.add(user)
+        log.like_count=log.like_count + 1
+        log.save()
+        return HttpResponse()
     else:
        log.users_like.remove(user)
        log.like_count = log.like_count - 1
