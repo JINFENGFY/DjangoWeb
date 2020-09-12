@@ -21,7 +21,7 @@ urlpatterns =[
     url(r'userdel/$',views.UserDel.as_view(),name='userdel'),
 
     #访问用户首页
-    url(r'userhomepage/(?P<user_id>\d+)/$',views.UserHome.as_view(),name='userhome'),
+    url(r'userhomepage/(?P<user_id>\d+)/(?P<page_num>\d+)/$',views.UserHome.as_view(),name='userhome'),
 
     #处理用户点赞
     url(r'^userlike/$',views.userlike,name='userlike'),

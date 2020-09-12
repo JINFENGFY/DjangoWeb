@@ -9,6 +9,9 @@ from django.utils.decorators import method_decorator
 from django.views import View
 from django.urls import reverse
 from datetime import datetime
+
+from learning_log.functions import MyPager
+from learning_log.models import LearningContent
 from .forms import MoreInfoFrom
 from .models import User_more_info
 
@@ -51,7 +54,7 @@ class UserDel(View):
 
 
 class UserHome(View):
-    def get(self,request,user_id):
+    def get(self,request,user_id,page_num):
         user_page=User.objects.get(id=user_id)
         user_info=User_more_info.objects.get(user_id=user_id)
         result1=user_info.appreciate.filter(username=request.user)
@@ -63,8 +66,12 @@ class UserHome(View):
         if result2:
             flag2=True
 
+        page_owner_topics = LearningContent.objects.filter (owner=user_id).order_by ('-createdTime')
+        pager, curpage_data = MyPager (page_owner_topics, page_num, 3)
+
         years=int((datetime.now().replace(tzinfo=pytz.timezone('UTC'))-user_info.usercreated).total_seconds()/86400+1)
-        return render(request,'user_home_page.html',{'user_page':user_page,'user_info':user_info,'years':years,'flag1':flag1,'flag2':flag2})
+        return render(request,'user_home_page.html',{'user_page':user_page,'user_info':user_info,'years':years,'flag1':flag1,'flag2':flag2,
+                                                     'pager':pager,'curpage_data':curpage_data,'page_num':int(page_num)})
 
 
 def userlike(request):
