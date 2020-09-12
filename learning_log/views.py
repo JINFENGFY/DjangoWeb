@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.http import HttpResponseRedirect, JsonResponse
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.views import View
@@ -64,17 +64,17 @@ def likeor_not(request):
 
     if likeornot == "True":
         if result:
-            return JsonResponse({'flag':False,})
+            return HttpResponse()
         else:
             log.users_like.add(user)
             log.like_count=log.like_count + 1
             log.save()
-            return JsonResponse({'flag':True})
+            return HttpResponse()
     else:
        log.users_like.remove(user)
        log.like_count = log.like_count - 1
        log.save ()
-       return JsonResponse ({'data':'dat'})
+       return HttpResponse()
 
 # dispatch 为所有方法添加修饰器， 例如‘get’，为单一方法提供修饰器，也可以放在方法头
 @method_decorator (login_required (), name='dispatch')
