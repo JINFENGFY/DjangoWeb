@@ -110,7 +110,7 @@ class NewTopic (View):
             add_topic.categories.add (*category)
 
             follows=User_more_info.objects.get(user=request.user.id).follow.all()
-            learning_log=LearningContent.objects.filter(owner=26).order_by('-createdTime')[0]
+            learning_log=LearningContent.objects.filter(owner=request.user.id).order_by('-createdTime')[0]
             #发送新文章提醒给关注该用户的用户
             notify.send (
                 request.user,
