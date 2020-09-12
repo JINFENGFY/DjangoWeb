@@ -1,9 +1,9 @@
 #coding=utf-8
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.views import View
 from django.views.generic import ListView
-from django.contrib.auth.mixins import LoginRequiredMixin
 from learning_log.models import LearningContent
 from notifications.models import *
 
@@ -19,7 +19,7 @@ class CommentNoticeListView(LoginRequiredMixin, ListView):
 
     # 未读通知的查询集
     def get_queryset(self):
-        return self.request.user.notifications.unread()
+        return self.request.user.notifications.unread ()
 
 
 class CommentNoticeUpdateView(View):
