@@ -37,21 +37,24 @@ class ShowComments(View):
                     notify.send(
                         request.user,
                         recipient=parent_comment.owner,
-                        verb='恢复了你',
+                        verb='{0}在文章{1}回复了你的评论'.format(request.user,learning_log.title),
                         target=learning_log,
                         action_object=new_comment,
+                        description='comment',
                     )
                 return HttpResponse('success')
 
             new_comment.save()
-            # 给管理员发送通知
+
+            #发送消息
             if not request.user == learning_log.owner:
                 notify.send (
                     request.user,
                     recipient=learning_log.owner,
-                    verb='回复了你',
+                    verb='{0}评论了你的文章《{1}》'.format(request.user,learning_log.title),
                     target=learning_log,
                     action_object=new_comment,
+                    description='comment',
                 )
             return HttpResponse('success')
         else:
