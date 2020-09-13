@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'mptt',
     'notifications',
+    'password_reset',
 
     #功能app
     'learning_log',
@@ -238,3 +239,16 @@ CKEDITOR_CONFIGS = {
         'extraPlugins': ','.join(['codesnippet']),
     }
 }
+
+#SMPT服务器
+EMAIL_HOST = 'smtp.qq.com'
+# 邮箱名
+EMAIL_HOST_USER = 'jinfengfy@foxmail.com'
+# 邮箱密码
+EMAIL_HOST_PASSWORD = 'smaqvrbjavgtbdej'
+# 发送邮件的端口
+EMAIL_PORT = 25
+# 是否使用 TLS
+EMAIL_USE_TLS = True
+# 默认的发件人
+DEFAULT_FROM_EMAIL = '网站 <jinfengfy@foxmail.com>'
