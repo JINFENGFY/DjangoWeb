@@ -28,4 +28,7 @@ urlpatterns =[
 
     #处理用户关注
     url(r'^follow/$',views.userfollow,name='follow'),
+
+    #用户修改资料
+    url(r'^modify_data/(?P<user_id>\d+)/$',views.modify_data,name='modify_data'),
 ]
