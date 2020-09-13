@@ -11,42 +11,42 @@
     </title>
 </head>
 <body>
-    {% block main %}
-        <div class="page-header">
-          <h1>搜索结果：</h1>
-        </div>
+{% block main %}
+    <div class="page-header">
+        <h1>搜索结果：</h1>
+    </div>
 
-        <div class="archives">
-            {% if query %}
-                {% for c_post in page.object_list  %}
-                    <div class="panel panel-default">
-                          <div class="panel-heading">
-                            <h3 class="panel-title">
-                                <a href="{% url 'learning_log:topic' c_post.object.lnum %}">{{ c_post.object.title }}</a>
-                            </h3>
-                          </div>
-                          <div class="panel-body">
-                             <div class="row">
-                                 <div class="col-xs-9">
-                                     {% for category in c_post.object.categories.all %}
-                                        <span class="label label-success">{{ category|split_str:"3," }}</span>
-                                     {% endfor %}
-                                 </div>
-                                 <div class="col-xs-3">
-                                     <span>{{ c_post.object.createdTime }}</span>
-                                 </div>
-                             </div>
-
-                          </div>
+    <div class="archives">
+        {% if query %}
+            {% for c_post in page.object_list %}
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <a href="{% url 'learning_log:topic' c_post.object.lnum %}">{{ c_post.object.title }}</a>
+                        </h3>
                     </div>
-                    {% empty %}
-                        <div class="alert alert-warning" role="alert">无记录</div>
-                {% endfor %}
-            {% endif %}
-              <a type="button" class="btn btn-primary" href="{% url 'learning_log:topics' 1 %}">返回</a>
-            </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-9">
+                                {% for category in c_post.object.categories.all %}
+                                    <span class="label label-success">{{ category|split_str:"3," }}</span>
+                                {% endfor %}
+                            </div>
+                            <div class="col-xs-3">
+                                <span>{{ c_post.object.createdTime }}</span>
+                            </div>
+                        </div>
 
-    {% endblock %}
+                    </div>
+                </div>
+            {% empty %}
+                <div class="alert alert-warning" role="alert">无记录</div>
+            {% endfor %}
+        {% endif %}
+        <a type="button" class="btn btn-primary" href="{% url 'learning_log:topics' 1 %}">返回</a>
+    </div>
+
+{% endblock %}
 
 </body>
 </html>

@@ -13,246 +13,268 @@
     </title>
 </head>
 <body>
-    {% block main %}
-        <link rel="stylesheet" href="{% static 'css/editormd.preview.css' %}">
-        <link rel="stylesheet" href="{% static 'css/default.css' %}">
-        <link rel="stylesheet" href="{% static 'css/hsycmsAlert.css' %}">
+{% block main %}
+    <link rel="stylesheet" href="{% static 'css/editormd.preview.css' %}">
+    <link rel="stylesheet" href="{% static 'css/default.css' %}">
+    <link rel="stylesheet" href="{% static 'css/hsycmsAlert.css' %}">
 
-        <div class="blog-header">
-            <h1 class="blog-title">{{ topic.title }}</h1>
-            <p class="lead blog-categories">
-                {% for c in topic.categories.all %}
-                    <span class="label label-success">{{ c|split_str:"3,"  }}</span>
-                {% endfor %}
-            </p>
-        </div>
+    <div class="blog-header">
+        <h1 class="blog-title">{{ topic.title }}</h1>
+        <p class="lead blog-categories">
+            {% for c in topic.categories.all %}
+                <span class="label label-success">{{ c|split_str:"3," }}</span>
+            {% endfor %}
+        </p>
+    </div>
 
-        <div class="blog-main">
-            <div class="blog-post">
-                <p class="blog-post-meta">{{ topic.createdTime|date:'Y-m-d h:m:s' }} by <a href="{% url 'users:userhome' topic.owner.id 1 %}">{{ topic.owner }}</a>
-                    {% if user.is_authenticated %}
-                        {% if flag %}
-                            <button type="button" class="btn btn-success navbar-btn" id="btn-ajax" value="False" onclick="User_like()">已点赞</button>
-                            {% else %}
-                                <button type="button" class="btn btn-info navbar-btn" id="btn-ajax" value="True" onclick="User_like()">点赞</button>
-                        {% endif %}
+    <div class="blog-main">
+        <div class="blog-post">
+            <p class="blog-post-meta">{{ topic.createdTime|date:'Y-m-d h:m:s' }} by <a
+                    href="{% url 'users:userhome' topic.owner.id 1 %}">{{ topic.owner }}</a>
+                <!--点赞-->
+                {% if user.is_authenticated %}
+                    {% if flag %}
+                        <button type="button" class="btn btn-success navbar-btn" id="btn-ajax" value="False"
+                                onclick="User_like()">已点赞
+                        </button>
+                    {% else %}
+                        <button type="button" class="btn btn-info navbar-btn" id="btn-ajax" value="True"
+                                onclick="User_like()">点赞
+                        </button>
                     {% endif %}
-                    <span id="Spanmessige"></span>
-                </p>
-                <div class="jumbotron">
-                    <div class="container">
-                        <div class="post-description markdown-body">
-                            <p>{{ topic.content|safe }}</p>
-                        </div>
+                {% endif %}
+                <span id="Spanmessige"></span>
+            </p>
+            <div class="jumbotron">
+                <div class="container">
+                    <div class="post-description markdown-body">
+                        <p>{{ topic.content|safe }}</p>
                     </div>
                 </div>
-                <!--分享-->
-                <div class="bshare-custom" style="margin-left: 80%"><a title="分享到QQ空间" class="bshare-qzone"></a><a title="分享到新浪微博" class="bshare-sinaminiblog"></a><a title="分享到人人网" class="bshare-renren"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="分享到网易微博" class="bshare-neteasemb"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span class="BSHARE_COUNT bshare-share-count">0</span></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+            </div>
+            <!--分享-->
+            <div class="bshare-custom" style="margin-left: 80%"><a title="分享到QQ空间" class="bshare-qzone"></a><a
+                    title="分享到新浪微博" class="bshare-sinaminiblog"></a><a title="分享到人人网" class="bshare-renren"></a><a
+                    title="分享到腾讯微博" class="bshare-qqmb"></a><a title="分享到网易微博" class="bshare-neteasemb"></a><a
+                    title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span
+                    class="BSHARE_COUNT bshare-share-count">0</span></div>
+            <script type="text/javascript" charset="utf-8"
+                    src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script>
+            <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
 
-              </div>
-            <hr/>
-            <div class="row">
-                <div class="col-xs-8">
-                    <!-- 发表评论-->
-                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                      评论一下吧！<span class="glyphicon glyphicon-chevron-down"></span>
-                    </button>
-                        <div class="collapse" id="collapseExample">
-                          <div class="well">
-                                {% if user.is_authenticated %}
-                                    <form action="." method="POST">
-                                        {% csrf_token %}
-                                        <div>
-                                            {{ comment_form.media }}
-                                            {{ comment_form.commentcontent }}
-                                        </div>
-                                    </form>
-                                    <button class="btn btn-primary" type="submit" onclick="first_comment({{ topic.lnum }})">发送</button>
-                                    {% else %}
-                                        <div class="alert alert-warning" role="alert">
-                                            还没有登录？<a href="{% url 'users:login' %}">登录</a>后再评论吧！
-                                        </div>
-                                {% endif %}
-                          </div>
-                        </div>
-                </div>
-                <div class="col-xs-4">
-                    {% if user.is_authenticated %}
-                {% ifequal topic.owner request.user %}
-                    <div class="btn-group" role="group" aria-label="...">
-                      <a type="button" class="btn btn-primary" href="{% url 'learning_log:edittopic' topic.lnum %}">修改</a>
-                      <a type="button" class="btn btn-primary" href="#" id="delpost" onclick="confirm()"><span id="in_link">删除</span></a>
-                      <a type="button" class="btn btn-primary" href="{% url 'learning_log:topics' 1 %}">返回</a>
+        </div>
+        <hr/>
+        <!-- 发表评论-->
+        <div class="row">
+            <div class="col-xs-8">
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample"
+                        aria-expanded="false" aria-controls="collapseExample">
+                    评论一下吧！<span class="glyphicon glyphicon-chevron-down"></span>
+                </button>
+                <div class="collapse" id="collapseExample">
+                    <div class="well">
+                        {% if user.is_authenticated %}
+                            <form action="." method="POST">
+                                {% csrf_token %}
+                                <div>
+                                    {{ comment_form.media }}
+                                    {{ comment_form.commentcontent }}
+                                </div>
+                            </form>
+                            <button class="btn btn-primary" type="submit" onclick="first_comment({{ topic.lnum }})">发送
+                            </button>
+                        {% else %}
+                            <div class="alert alert-warning" role="alert">
+                                还没有登录？<a href="{% url 'users:login' %}">登录</a>后再评论吧！
+                            </div>
+                        {% endif %}
                     </div>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                {% if user.is_authenticated %}
+                    {% ifequal topic.owner request.user %}
+                        <div class="btn-group" role="group" aria-label="...">
+                            <a type="button" class="btn btn-primary"
+                               href="{% url 'learning_log:edittopic' topic.lnum %}">修改</a>
+                            <a type="button" class="btn btn-primary" href="#" id="delpost" onclick="confirm()"><span
+                                    id="in_link">删除</span></a>
+                            <a type="button" class="btn btn-primary" href="{% url 'learning_log:topics' 1 %}">返回</a>
+                        </div>
                     {% else %}
                         <a type="button" class="btn btn-primary" href="{% url 'learning_log:topics' 1 %}">返回</a>
-                {% endifequal %}
+                    {% endifequal %}
                 {% else %}
                     <a type="button" class="btn btn-primary" href="{% url 'learning_log:topics' 1 %}">返回</a>
-            {% endif %}
-                    <input type="hidden" value="{{ topic.lnum }}" id="hidden">
-                </div>
-            </div>
-
-
-            <br><br>
-
-            <!-- 显示评论-->
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h3 class="panel-title">共有{{ comment.count }}条评论</h3>
-              </div>
-            <div class="panel-body" style="padding-top: 0">
-                <div class="row">
-                {% recursetree comment %}
-                    {% with comment=node %}
-                        <div class="{% if comment.reply_to %} offset-1 col-11 {% else %} col-12 {% endif %} " id="comment_elem_{{ comment.comnum }}">
-                                <div class="panel panel-default" style="{% if comment.reply_to %} margin-bottom: 0 {% endif %}">
-                                  <div class="panel-heading">
-                                      {{ comment.owner }}
-                                      {% if comment.reply_to %}
-                                            <span class="glyphicon glyphicon-arrow-right"></span>
-                                            {{ comment.reply_to }}
-                                      {% endif %}
-                                  </div>
-                                  <div class="panel-body">
-                                      <div class="row">
-                                          <div class="{% if comment.reply_to %} col-xs-9{% endif %}">
-                                            {{ comment.commentcontent|safe}}
-                                          </div>
-                                          <div class="{% if comment.reply_to %} col-xs-3 {% endif %}">
-                                              {{ comment.created|date:"Y-m-d H:i"}}
-                                          {% if user.is_authenticated %}
-                                                <button type="button"
-                                                        class="btn btn-info btn-sm text-muted"
-                                                        onclick="load_modal({{ topic.lnum }}, {{ comment.comnum }})"
-                                                >
-                                                    回复
-                                                </button>
-                                            {% else %}
-                                                回复请
-                                                <a class="btn btn-info btn-sm text-muted"
-                                                    href="{% url 'users:login' %}"
-                                                >登录</a>
-                                          {% endif %}
-                                          </div>
-                                      </div>
-
-                                      <!-- 对话框-->
-                                      <div class="modal fade"
-                                                 id="comment_{{ comment.comnum }}"
-                                                 tabindex="-1"
-                                                 role="dialog"
-                                                 aria-labelledby="CommentModalCenter"
-                                                 aria-hidden="true"
-                                            >
-                                                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                                                    <div class="modal-content" style="height: 480px">
-                                                        <div class="modal-header">
-                                                            <button class="close" data-dismiss="modal">&times;</button>
-                                                            <h5 class="modal-title" id="exampleModalCenterTitle">回复 {{ comment.owner }}：</h5>
-                                                        </div>
-                                                        <div class="modal-body" id="modal_body_{{ comment.comnum }}"></div>
-                                                    </div>
-                                                </div>
-                                      </div>
-
-                                      {% if not comment.is_leaf_node %}
-                                          <div class="children">
-                                              {{ children }}
-                                          </div>
-                                      {% endif %}
-                                  </div>
-                                </div>
-                        </div>
-                    {% endwith %}
-                {% endrecursetree %}
-            </div>
-            </div>
+                {% endif %}
+                <input type="hidden" value="{{ topic.lnum }}" id="hidden">
             </div>
         </div>
 
 
-         <!--询问弹窗-->
-         <div class="hsycms-model-mask" id="mask-confirm"></div>
-         <div class="hsycms-model hsycms-model-confirm" id="confirm">
-           <div class="hscysm-model-title">温馨提示</div>
-           <div class="hsycms-model-text">确定要操作？</div>
-           <div class="hsycms-model-btn">
+        <br><br>
+
+        <!-- 显示评论-->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">共有{{ comment.count }}条评论</h3>
+            </div>
+            <div class="panel-body" style="padding-top: 0">
+                <div class="row">
+                    {% recursetree comment %}
+                        {% with comment=node %}
+                            <div class="{% if comment.reply_to %} offset-1 col-11 {% else %} col-12 {% endif %} "
+                                 id="comment_elem_{{ comment.comnum }}">
+                                <div class="panel panel-default"
+                                     style="{% if comment.reply_to %} margin-bottom: 0 {% endif %}">
+                                    <div class="panel-heading">
+                                        {{ comment.owner }}
+                                        {% if comment.reply_to %}
+                                            <span class="glyphicon glyphicon-arrow-right"></span>
+                                            {{ comment.reply_to }}
+                                        {% endif %}
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="{% if comment.reply_to %} col-xs-9{% endif %}">
+                                                {{ comment.commentcontent|safe }}
+                                            </div>
+                                            <div class="{% if comment.reply_to %} col-xs-3 {% endif %}">
+                                                {{ comment.created|date:"Y-m-d H:i" }}
+                                                {% if user.is_authenticated %}
+                                                    <button type="button"
+                                                            class="btn btn-info btn-sm text-muted"
+                                                            onclick="load_modal({{ topic.lnum }}, {{ comment.comnum }})"
+                                                    >
+                                                        回复
+                                                    </button>
+                                                {% else %}
+                                                    回复请
+                                                    <a class="btn btn-info btn-sm text-muted"
+                                                       href="{% url 'users:login' %}"
+                                                    >登录</a>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+
+                                        <!-- 对话框-->
+                                        <div class="modal fade"
+                                             id="comment_{{ comment.comnum }}"
+                                             tabindex="-1"
+                                             role="dialog"
+                                             aria-labelledby="CommentModalCenter"
+                                             aria-hidden="true"
+                                        >
+                                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                                <div class="modal-content" style="height: 480px">
+                                                    <div class="modal-header">
+                                                        <button class="close" data-dismiss="modal">&times;</button>
+                                                        <h5 class="modal-title" id="exampleModalCenterTitle">
+                                                            回复 {{ comment.owner }}：</h5>
+                                                    </div>
+                                                    <div class="modal-body" id="modal_body_{{ comment.comnum }}"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {% if not comment.is_leaf_node %}
+                                            <div class="children">
+                                                {{ children }}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endwith %}
+                    {% endrecursetree %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--询问弹窗-->
+    <div class="hsycms-model-mask" id="mask-confirm"></div>
+    <div class="hsycms-model hsycms-model-confirm" id="confirm">
+        <div class="hscysm-model-title">温馨提示</div>
+        <div class="hsycms-model-text">确定要操作？</div>
+        <div class="hsycms-model-btn">
             <button type="button" class="cancel">取消</button>
             <button type="button" class="ok">确定</button>
-           </div>
-         </div>
+        </div>
+    </div>
 
     <script>
-        function User_like(){
+        function User_like() {
             //获取按钮的信息和对象
-            let btn=$("#btn-ajax")
-            let likeornot=btn.attr("value");
+            let btn = $("#btn-ajax")
+            let likeornot = btn.attr("value");
             //获取文章id
-            let learninglog_id=$("#hidden").attr("value");
+            let learninglog_id = $("#hidden").attr("value");
             //提示信息框对象
-            let messige=$("#Spanmessige")
+            let messige = $("#Spanmessige")
             //后台处理
-            $.get('/like/',{'likeornot':likeornot,"learninglog_id":learninglog_id},function (){
-                if(likeornot === "True"){
+            $.get('/like/', {'likeornot': likeornot, "learninglog_id": learninglog_id}, function () {
+                if (likeornot === "True") {
                     btn.html('已点赞');
                     btn.removeClass("btn-info");
                     btn.addClass("btn-success");
-                    btn.attr("value","False");
-                }
-                else {
+                    btn.attr("value", "False");
+                } else {
                     messige.html("已经移除点赞");
                     btn.html('点赞');
                     btn.removeClass("btn-success");
                     btn.addClass("btn-info");
-                    btn.attr("value","True");
-                    setTimeout(function (){
+                    btn.attr("value", "True");
+                    setTimeout(function () {
                         messige.html('')
-                    },2000)
+                    }, 2000)
                 }
             })
         }
 
-        function first_comment(topic_id){
+        function first_comment(topic_id) {
             //从ckeditor中获取数据
             let csrf = $('input[name="csrfmiddlewaretoken"]').val();
-            let content=CKEDITOR.instances['id_commentcontent'].getData();
+            let content = CKEDITOR.instances['id_commentcontent'].getData();
             //用ajax与后端交换数据
-            $.post('/comment/log_comment/' + topic_id + '/',{'commentcontent': content,'csrfmiddlewaretoken': csrf},function (result){
-                if(result === 'success'){
-                   window.location.reload();
+            $.post('/comment/log_comment/' + topic_id + '/', {
+                'commentcontent': content,
+                'csrfmiddlewaretoken': csrf
+            }, function (result) {
+                if (result === 'success') {
+                    window.location.reload();
                 }
             })
         }
 
-        function load_modal(topic_lnum , comment_comnum) {
+        function load_modal(topic_lnum, comment_comnum) {
             let modal_body = '#modal_body_' + comment_comnum;
             let modal_id = '#comment_' + comment_comnum;
             // 加载编辑器
             if ($(modal_body).children().length === 0) {
-                let content = '<iframe src="/comment/log_comment/' + topic_lnum + '/' + comment_comnum +'"'+' frameborder="0" style="width: 100%; height: 400px;" id="iframe_'+comment_comnum+'"></iframe>';
+                let content = '<iframe src="/comment/log_comment/' + topic_lnum + '/' + comment_comnum + '"' + ' frameborder="0" style="width: 100%; height: 400px;" id="iframe_' + comment_comnum + '"></iframe>';
                 $(modal_body).append(content);
             }
 
             $(modal_id).modal('show');
         }
 
-       //询问弹窗
-       function confirm(){
-          hsycms.confirm('confirm','您即将删除该文章，确定吗？',
-             function(){
-                hsycms.success('success','点击了确定');
-                $("#delpost").attr('href','{% url 'learning_log:deltopic' topic.lnum %}');
-                $("#in_link").click();
-             },
-            function(){
-                hsycms.error('error','点击了取消');
-             },
-          )
-       }
+        //询问弹窗
+        function confirm() {
+            hsycms.confirm('confirm', '您即将删除该文章，确定吗？',
+                function () {
+                    hsycms.success('success', '点击了确定');
+                    $("#delpost").attr('href', '{% url 'learning_log:deltopic' topic.lnum %}');
+                    $("#in_link").click();
+                },
+                function () {
+                    hsycms.error('error', '点击了取消');
+                },
+            )
+        }
     </script>
-    {% endblock %}
+{% endblock %}
 
 </body>
 </html>

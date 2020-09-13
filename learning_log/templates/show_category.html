@@ -11,83 +11,86 @@
     </title>
 </head>
 <body>
-    {% block main %}
-        <div class="page-header">
-          <h1>{{ cate_name|split_str:"3," }}：</h1>
-        </div>
+{% block main %}
+    <div class="page-header">
+        <h1>{{ cate_name|split_str:"3," }}：</h1>
+    </div>
 
-        {% for topic in curpage_data %}
+    {% for topic in curpage_data %}
         <div class="panel panel-default">
-              <div class="panel-heading">
+            <div class="panel-heading">
                 <h3 class="panel-title">
-                    <a href="{% url 'learning_log:topic' topic.lnum%}">{{ topic|split_str:"5," }}</a>
+                    <a href="{% url 'learning_log:topic' topic.lnum %}">{{ topic|split_str:"5," }}</a>
                 </h3>
-              </div>
-              <div class="panel-body">
-                 <div class="row">
-                     <div class="col-xs-9">
-                         {% for category in topic.categories.all %}
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-9">
+                        {% for category in topic.categories.all %}
                             <span class="label label-success">{{ category|split_str:"3," }}</span>
-                         {% endfor %}
-                     </div>
-                     <div class="col-xs-3">
-                         <span>{{ topic.createdTime }}</span>
-                     </div>
-                 </div>
+                        {% endfor %}
+                    </div>
+                    <div class="col-xs-3">
+                        <span>{{ topic.createdTime }}</span>
+                    </div>
+                </div>
 
-              </div>
+            </div>
         </div>
-            {% empty %}
-            没有一条项目！
-        {% endfor %}
+    {% empty %}
+        <div class="alert alert-warning" role="alert">没有一条项目！</div>
+    {% endfor %}
 
-        <div class="text-center">
-            <div class="row">
-                <div class="col-xs-9">
+    <div class="text-center">
+        <div class="row">
+            <div class="col-xs-9">
                 <div class="text-center">
                     <nav aria-label="Page navigation">
-              <ul class="pagination pagination-lg">
-                <li>
-                    <!-- has_previous判断该页前面有没有数据 previous_page_number获得前一页的页码 -->
-                    {% if curpage_data.has_previous %}
-                        <a href="{% url 'learning_log:category' category_id curpage_data.previous_page_number %}" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    {% endif %}
-                </li>
+                        <ul class="pagination pagination-lg">
+                            <li>
+                                <!-- has_previous判断该页前面有没有数据 previous_page_number获得前一页的页码 -->
+                                {% if curpage_data.has_previous %}
+                                    <a href="{% url 'learning_log:category' category_id curpage_data.previous_page_number %}"
+                                       aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                {% endif %}
+                            </li>
 
-                <!--传入pager对象的原因 需要获得页码范围 -->
-                {% for n in pager.page_range %}
-                    {% if n == page_num %}
-                        <li class="active"><a href="{% url 'learning_log:category' category_id n %}">{{ n }}</a></li>
-                        {% else %}
-                        <li><a href="{% url 'learning_log:category' category_id n %}">{{ n }}</a></li>
-                    {% endif %}
+                            <!--传入pager对象的原因 需要获得页码范围 -->
+                            {% for n in pager.page_range %}
+                                {% if n == page_num %}
+                                    <li class="active"><a
+                                            href="{% url 'learning_log:category' category_id n %}">{{ n }}</a></li>
+                                {% else %}
+                                    <li><a href="{% url 'learning_log:category' category_id n %}">{{ n }}</a></li>
+                                {% endif %}
 
-                {% endfor %}
+                            {% endfor %}
 
-                <li>
-                    {% if curpage_data.has_next %}
-                        <a href="{% url 'learning_log:category' category_id curpage_data.next_page_number %}" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    {% endif %}
+                            <li>
+                                {% if curpage_data.has_next %}
+                                    <a href="{% url 'learning_log:category' category_id curpage_data.next_page_number %}"
+                                       aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                {% endif %}
 
-                </li>
-              </ul>
-            </nav>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
-                </div>
-                <div class="col-xs-3">
-                        <div class="btn-group btn-group-sm" role="group" aria-label="..." style="margin-top: 10%">
-                          <a type="button" class="btn btn-primary" href="{% url 'learning_log:topics' 1 %}">返回</a>
-                        </div>
+            </div>
+            <div class="col-xs-3">
+                <div class="btn-group btn-group-sm" role="group" aria-label="..." style="margin-top: 10%">
+                    <a type="button" class="btn btn-primary" href="{% url 'learning_log:topics' 1 %}">返回</a>
                 </div>
             </div>
         </div>
+    </div>
 
 
-    {% endblock %}
+{% endblock %}
 
 </body>
 </html>
