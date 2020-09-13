@@ -1,0 +1,12 @@
+{% extends "base.html" %}{% load i18n %}
+
+{% block title %}{% trans "New password set" %}{% endblock %}
+
+{% block main %}
+    <div class="container">
+            <div class="alert alert-success" role="alert">
+            <p>{% trans "Your password has successfully been reset. You can use it right now on the login page." %}</p>
+            </div>
+            <a type="button" class="btn btn-success" href="{% url 'users:login' %}">登录</a>
+    </div>
+{% endblock %}

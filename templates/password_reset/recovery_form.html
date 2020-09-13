@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load i18n %}
+
+{% block title %}{% trans "Password recovery" %}{% endblock %}
+
+{% block main %}
+    <div class="container-fluid">
+            <form method="post" action="{{ url }}">
+		        {% csrf_token %}
+                {% bootstrap_form form %}
+		        <p><input type="submit" value="{% trans "Recover my password" %}"></p>
+	        </form>
+    </div>
+
+{% endblock %}
