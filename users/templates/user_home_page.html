@@ -12,167 +12,176 @@
     </title>
 </head>
 <body>
-    {% block main %}
-        <div class="jumbotron">
-          <div>
-              <h1>{{ user_page.username }}</h1>
-              <div class="user_info">
+{% block main %}
+    <div class="jumbotron">
+        <div>
+            <h1>{{ user_page.username }}</h1>
+            <div class="user_info">
+                <div class="row">
+                    <div class="col-xs-3" id="gender">
+                        {% if user_info.gender == 'male' %}
+                            <span><img src="{% static 'media/appimage/png/male.png' %}"></span>
+                        {% else %}
+                            <span><img src="{% static 'media/appimage/png/female.png' %}"></span>
+                        {% endif %}
+                    </div>
+                    <div class="col-xs-3" id="appreciate">
+                        <span><img src="{% static 'media/appimage/png/thumbs_up.png' %}"></span>&emsp;
+                        <h3 style="display: inline" id="thumbs">{{ user_info.appreciate_count }}</h3>
+                    </div>
+                    <div class="col-xs-3" id="years">
+                        <span><img src="{% static 'media/appimage/png/time.png' %}"></span> &emsp;
+                        <h3 style="display: inline">{{ years }}&nbsp;天</h3>
+                    </div>
+                    <div class="col-xs-3">
+                        {% if user.is_authenticated %}
+                            {% ifnotequal user_page.username request.user.username %}
+                                <div class="btn-group" role="group" aria-label="...">
+                                    {% if flag1 %}
+                                        <button type="button" class="btn btn-success" id="dianzan" value="False"
+                                                onclick="give_the_thumbs_up()">已点赞
+                                        </button>
+                                    {% else %}
+                                        <button type="button" class="btn btn-default" id="dianzan" value="True"
+                                                onclick="give_the_thumbs_up()">点赞
+                                        </button>
+                                    {% endif %}
+                                    {% if flag2 %}
+                                        <button type="button" class="btn btn-success" id="guanzhu" value="False"
+                                                onclick="follow()">已关注
+                                        </button>
+                                    {% else %}
+                                        <button type="button" class="btn btn-default" id="guanzhu" value="True"
+                                                onclick="follow()">关注
+                                        </button>
+                                    {% endif %}
+                                </div>
+                            {% endifnotequal %}
+                        {% endif %}
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <hr>
+        <div>{{ user_info.brief_introduction }}</div>
+    </div>
+
+    <hr>
+    <div>
+        {% for topic in curpage_data %}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <a href="{% url 'learning_log:topic' topic.lnum %}">{{ topic|split_str:"5," }}</a>
+                    </h3>
+                </div>
+                <div class="panel-body">
                     <div class="row">
-                        <div class="col-xs-3" id="gender">
-                            {% if user_info.gender == 'male' %}
-                                <span><img src="{% static 'media/appimage/png/male.png' %}"></span>
-                                {% else %}
-                                    <span><img src="{% static 'media/appimage/png/female.png' %}"></span>
-                            {% endif %}
-                        </div>
-                        <div class="col-xs-3" id="appreciate">
-                            <span><img src="{% static 'media/appimage/png/thumbs_up.png' %}"></span>&emsp;
-                            <h3 style="display: inline" id="thumbs">{{ user_info.appreciate_count }}</h3>
-                        </div>
-                        <div class="col-xs-3" id="years">
-                            <span><img src="{% static 'media/appimage/png/time.png' %}"></span> &emsp;
-                            <h3 style="display: inline">{{ years }}&nbsp;天</h3>
+                        <div class="col-xs-9">
+                            {% for category in topic.categories.all %}
+                                <span class="label label-success">{{ category }}</span>
+                            {% endfor %}
                         </div>
                         <div class="col-xs-3">
-                                {% if user.is_authenticated %}
-                                  {% ifnotequal user_page.username request.user.username  %}
-                                    <div class="btn-group" role="group" aria-label="...">
-                                        {% if flag1 %}
-                                                <button type="button" class="btn btn-success" id="dianzan" value="False" onclick="give_the_thumbs_up()">已点赞</button>
-                                            {% else %}
-                                                <button type="button" class="btn btn-default" id="dianzan" value="True" onclick="give_the_thumbs_up()">点赞</button>
-                                        {% endif %}
-                                        {% if flag2 %}
-                                                <button type="button" class="btn btn-success" id="guanzhu" value="False" onclick="follow()">已关注</button>
-                                            {% else %}
-                                                <button type="button" class="btn btn-default" id="guanzhu" value="True" onclick="follow()">关注</button>
-                                        {% endif %}
-                                    </div>
-                                  {% endifnotequal %}
-                                {% endif %}
+                            <span>{{ topic.createdTime }}</span>
                         </div>
                     </div>
 
-
-              </div>
-          </div>
-            <hr>
-          <div>{{ user_info.brief_introduction }}</div>
-        </div>
-
-        <hr>
-        <div>
-                {% for topic in curpage_data %}
-                    <div class="panel panel-default">
-                          <div class="panel-heading">
-                            <h3 class="panel-title">
-                                <a href="{% url 'learning_log:topic' topic.lnum %}">{{ topic|split_str:"5," }}</a>
-                            </h3>
-                          </div>
-                          <div class="panel-body">
-                             <div class="row">
-                                 <div class="col-xs-9">
-                                     {% for category in topic.categories.all %}
-                                        <span class="label label-success">{{ category }}</span>
-                                     {% endfor %}
-                                 </div>
-                                 <div class="col-xs-3">
-                                     <span>{{ topic.createdTime }}</span>
-                                 </div>
-                             </div>
-
-                          </div>
-                    </div>
-                {% endfor %}
-                {% if curpage_data %}
+                </div>
+            </div>
+        {% endfor %}
+        {% if curpage_data %}
             <div class="text-center">
                 <div class="text-center">
                     <nav aria-label="Page navigation">
-              <ul class="pagination pagination-lg">
-                <li>
-                    <!-- has_previous判断该页前面有没有数据 previous_page_number获得前一页的页码 -->
-                    {% if curpage_data.has_previous %}
-                        <a href="{% url 'users:userhome' user_page.id curpage_data.previous_page_number %}" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    {% endif %}
-                </li>
+                        <ul class="pagination pagination-lg">
+                            <li>
+                                <!-- has_previous判断该页前面有没有数据 previous_page_number获得前一页的页码 -->
+                                {% if curpage_data.has_previous %}
+                                    <a href="{% url 'users:userhome' user_page.id curpage_data.previous_page_number %}"
+                                       aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                {% endif %}
+                            </li>
 
-                <!--传入pager对象的原因 需要获得页码范围 -->
-                {% for n in pager.page_range %}
-                    {% if n == page_num %}
-                        <li class="active"><a href="{% url 'users:userhome' user_page.id n %}">{{ n }}</a></li>
-                        {% else %}
-                        <li><a href="{% url 'users:userhome' user_page.id n %}">{{ n }}</a></li>
-                    {% endif %}
+                            <!--传入pager对象的原因 需要获得页码范围 -->
+                            {% for n in pager.page_range %}
+                                {% if n == page_num %}
+                                    <li class="active"><a href="{% url 'users:userhome' user_page.id n %}">{{ n }}</a>
+                                    </li>
+                                {% else %}
+                                    <li><a href="{% url 'users:userhome' user_page.id n %}">{{ n }}</a></li>
+                                {% endif %}
 
-                {% endfor %}
+                            {% endfor %}
 
-                <li>
-                    {% if curpage_data.has_next %}
-                        <a href="{% url 'users:userhome' user_page.id curpage_data.next_page_number %}" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    {% endif %}
+                            <li>
+                                {% if curpage_data.has_next %}
+                                    <a href="{% url 'users:userhome' user_page.id curpage_data.next_page_number %}"
+                                       aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                {% endif %}
 
-                </li>
-              </ul>
-            </nav>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
-           </div>
+            </div>
         {% endif %}
-        </div>
+    </div>
 
-        <script>
-            function give_the_thumbs_up(){
+    <script>
+        function give_the_thumbs_up() {
             //获取按钮的信息和对象
-            let btn=$("#dianzan")
-            let dianzan=btn.attr("value");
-            let thumbs=$("#thumbs");
-            let num=parseInt(thumbs.html());
+            let btn = $("#dianzan")
+            let dianzan = btn.attr("value");
+            let thumbs = $("#thumbs");
+            let num = parseInt(thumbs.html());
             //获取用户id
-            let homepage_owner=String({{ user_page.id }});
+            let homepage_owner = String({{ user_page.id }});
             //后台处理
-            $.get('/users/userlike/',{'dianzan':dianzan,"homepage_owner":homepage_owner},function (){
-                if(dianzan === "True"){
+            $.get('/users/userlike/', {'dianzan': dianzan, "homepage_owner": homepage_owner}, function () {
+                if (dianzan === "True") {
                     btn.html('已点赞');
-                    btn.attr('class','btn btn-success');
-                    btn.attr("value","False");
-                    thumbs.html(num+1);
+                    btn.attr('class', 'btn btn-success');
+                    btn.attr("value", "False");
+                    thumbs.html(num + 1);
 
-                }
-                else {
+                } else {
                     btn.html('点赞');
-                    btn.attr('class','btn btn-default');
-                    btn.attr("value","True");
-                    thumbs.html(num-1)
+                    btn.attr('class', 'btn btn-default');
+                    btn.attr("value", "True");
+                    thumbs.html(num - 1)
                 }
             })
         }
 
-            function follow(){
+        function follow() {
             //获取按钮的信息和对象
-            let btn=$("#guanzhu")
-            let guanzhu=btn.attr("value");
+            let btn = $("#guanzhu")
+            let guanzhu = btn.attr("value");
             //获取用户id
-            let homepage_owner=String({{ user_page.id }});
+            let homepage_owner = String({{ user_page.id }});
             //后台处理
-            $.get('/users/follow/',{'guanzhu':guanzhu,"homepage_owner":homepage_owner},function (){
-                if(guanzhu === "True"){
+            $.get('/users/follow/', {'guanzhu': guanzhu, "homepage_owner": homepage_owner}, function () {
+                if (guanzhu === "True") {
                     btn.html('已关注');
-                    btn.attr('class','btn btn-success');
-                    btn.attr("value","False");
-                }
-                else {
+                    btn.attr('class', 'btn btn-success');
+                    btn.attr("value", "False");
+                } else {
                     btn.html('guanzhu');
-                    btn.attr('class','btn btn-default');
-                    btn.attr("value","True");
+                    btn.attr('class', 'btn btn-default');
+                    btn.attr("value", "True");
                 }
             })
         }
 
-        </script>
-    {% endblock %}
+    </script>
+{% endblock %}
 
 </body>
 </html>

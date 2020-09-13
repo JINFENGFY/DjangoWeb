@@ -14,26 +14,26 @@
     {% bootstrap_javascript %}
 </head>
 <body>
-    {% block main %}
-        <div class="container">
-            <h2>注册一个属于你自己的账户</h2>
-            <hr>
-            {% if not flag %}
-                <div class="alert alert-danger" role="alert">
-                    您输入的表单有误，请重新输入（请设置更加复杂且符合要求的密码）！
-                </div>
-            {% endif %}
-            <form action="{% url 'users:register' %}" method="post">
-                {% csrf_token %}
-                {% bootstrap_form form1 %}
-                {% bootstrap_form form2 %}
+{% block main %}
+    <div class="container">
+        <h2>注册一个属于你自己的账户</h2>
+        <hr>
+        {% if not flag %}
+            <div class="alert alert-danger" role="alert">
+                您输入的表单有误，请重新输入（请设置更加复杂且符合要求的密码）！
+            </div>
+        {% endif %}
+        <form action="{% url 'users:register' %}" method="post">
+            {% csrf_token %}
+            {% bootstrap_form form1 %}
+            {% bootstrap_form form2 %}
 
-                <button name="submit" class="btn btn-primary">注册</button>
-                <input type="hidden" name="next" value="{% url 'learning_log:index' %}">
-            </form>
-        </div>
+            <button name="submit" class="btn btn-primary">注册</button>
+            <input type="hidden" name="next" value="{% url 'learning_log:index' %}">
+        </form>
+    </div>
 
-    {% endblock %}
+{% endblock %}
 
 </body>
 </html>

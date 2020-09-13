@@ -14,21 +14,21 @@
     {% bootstrap_javascript %}
 </head>
 <body>
-    {% block main %}
-        <div class="container">
-            <h2>请输入您的账户密码</h2>
-            <hr>
-            <form action="{% url 'users:login' %}" method="post">
+{% block main %}
+    <div class="container">
+        <h2>请输入您的账户密码</h2>
+        <hr>
+        <form action="{% url 'users:login' %}" method="post">
             {% csrf_token %}
             {% bootstrap_form form %}
 
             <button name="submit" class="btn btn-primary">登录</button>
             <input type="hidden" name="next" value="{% url 'learning_log:topics' 1 %}">
-            </form>
-            <h5>忘记密码了？</h5><h5>点击<a href="{% url "password_reset_recover" %}">这里</a>修改密码</h5>
-        </div>
+        </form>
+        <h5>忘记密码了？</h5><h5>点击<a href="{% url "password_reset_recover" %}">这里</a>修改密码</h5>
+    </div>
 
-    {% endblock %}
+{% endblock %}
 
 </body>
 </html>
