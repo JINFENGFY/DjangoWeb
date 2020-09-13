@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+            修改资料
+        {% endblock %}
+    </title>
+
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+    {% block main %}
+        <div class="container">
+            <h2>修改账户信息</h2>
+            <hr>
+            <form action="{% url 'users:modify_data' user_id %}" method="post">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+
+                <button name="submit" class="btn btn-primary">提交</button>
+                <input type="hidden" name="next" value="{% url 'learning_log:index' %}">
+            </form>
+        </div>
+
+    {% endblock %}
+
+</body>
+</html>
