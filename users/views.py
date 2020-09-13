@@ -1,7 +1,6 @@
 import pytz
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
@@ -9,16 +8,15 @@ from django.utils.decorators import method_decorator
 from django.views import View
 from django.urls import reverse
 from datetime import datetime
-
 from learning_log.functions import MyPager
 from learning_log.models import LearningContent
-from .forms import MoreInfoFrom
+from .forms import MoreInfoFrom,UserCreationExpandFrom
 from .models import User_more_info
 
 
 # Create your views here.
 class Register (View):
-    form1 = UserCreationForm ()
+    form1 = UserCreationExpandFrom ()
     form2 = MoreInfoFrom()
     flag=True
 
@@ -26,7 +24,7 @@ class Register (View):
         return render(request,'register.html',{'form1':self.form1,'form2':self.form2,'flag':self.flag})
 
     def post(self,request):
-        form_user=UserCreationForm(data=request.POST)
+        form_user=UserCreationExpandFrom(data=request.POST)
         form_info=MoreInfoFrom(data=request.POST)
 
         if form_user.is_valid() and form_info.is_valid():
@@ -110,3 +108,21 @@ def userfollow(request):
         homepage_ownerobj.follow.remove (user)
         homepage_ownerobj.save ()
         return HttpResponse()
+
+
+def modify_data(request,user_id):
+    content = User_more_info.objects.filter (user_id=user_id).first ()
+    form = MoreInfoFrom (instance=content)
+
+    if request.method=='GET':
+        return render (request, 'modify_data.html', {'form':form,'user_id':user_id})
+    else:
+        form_info = MoreInfoFrom (data=request.POST)
+        var = User_more_info.objects.filter (user_id=user_id)
+        var.delete()
+        if form_info.is_valid ():
+            more_info = form_info.save (commit=False)
+            more_info.user = request.user
+            more_info.save ()
+
+            return HttpResponseRedirect (reverse ('learning_log:topics', args=[1]))
