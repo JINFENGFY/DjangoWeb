@@ -1,5 +1,6 @@
 {% extends 'base_learning_log_show.html' %}
 {% load Custom_filters %}
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,18 +20,18 @@
                     <div class="row">
                         <div class="col-xs-3" id="gender">
                             {% if user_info.gender == 'male' %}
-                                <span class="glyphicon glyphicon-king"></span>
+                                <span><img src="{% static 'media/appimage/png/male.png' %}"></span>
                                 {% else %}
-                                    <span class="glyphicon glyphicon-queen"></span>
+                                    <span><img src="{% static 'media/appimage/png/female.png' %}"></span>
                             {% endif %}
                         </div>
                         <div class="col-xs-3" id="appreciate">
-                            <span class="glyphicon glyphicon-thumbs-up"></span>&emsp;
-                            {{ user_info.appreciate_count }}
+                            <span><img src="{% static 'media/appimage/png/thumbs_up.png' %}"></span>&emsp;
+                            <h3 style="display: inline" id="thumbs">{{ user_info.appreciate_count }}</h3>
                         </div>
                         <div class="col-xs-3" id="years">
-                            <span class="glyphicon glyphicon-time"></span> &emsp;
-                            {{ years }}&nbsp;天
+                            <span><img src="{% static 'media/appimage/png/time.png' %}"></span> &emsp;
+                            <h3 style="display: inline">{{ years }}&nbsp;天</h3>
                         </div>
                         <div class="col-xs-3">
                                 {% if user.is_authenticated %}
@@ -127,6 +128,8 @@
             //获取按钮的信息和对象
             let btn=$("#dianzan")
             let dianzan=btn.attr("value");
+            let thumbs=$("#thumbs");
+            let num=parseInt(thumbs.html());
             //获取用户id
             let homepage_owner=String({{ user_page.id }});
             //后台处理
@@ -135,11 +138,14 @@
                     btn.html('已点赞');
                     btn.attr('class','btn btn-success');
                     btn.attr("value","False");
+                    thumbs.html(num+1);
+
                 }
                 else {
                     btn.html('点赞');
                     btn.attr('class','btn btn-default');
                     btn.attr("value","True");
+                    thumbs.html(num-1)
                 }
             })
         }
