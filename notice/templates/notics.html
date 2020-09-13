@@ -10,33 +10,35 @@
     </title>
 </head>
 <body>
-    {% block main %}
-        <div class="container-fluid" style="margin-top: 20px">
-            <p>
-                <a type="buttom" class="btn btn-primary" href="{% url 'notice:update' %}">清空所有通知</a>
-            </p>
-            <div id="list-item">
-                <ul class="list-group">
-                  {% for notice in notices %}
-                      {% ifequal notice.description 'comment' %}
-                            <li class="list-group-item">
-                                <a href="{% url 'notice:update' %}?topic_id={{ notice.target.lnum }}&notice_id={{ notice.id }}#comment_elem_{{ notice.action_object.comnum }}"
-                                >
-                                    <div class="alert alert-success" role="alert">[{{ notice.timesince }}]{{ notice.verb }}</div>
-                                </a>
-                            </li>
-                            {% else %}
-                            <li class="list-group-item">
-                                <a href="{% url 'notice:update' %}?topic_id={{ notice.target.lnum }}&notice_id={{ notice.id }}"
-                                >
-                                    <div class="alert alert-success" role="alert">[{{ notice.timesince }}]{{ notice.verb }}</div>
-                                </a>
-                            </li>
-                      {% endifequal %}
-                  {% endfor %}
-                </ul>
-            </div>
+{% block main %}
+    <div class="container-fluid" style="margin-top: 20px">
+        <p>
+            <a type="buttom" class="btn btn-primary" href="{% url 'notice:update' %}">清空所有通知</a>
+        </p>
+        <div id="list-item">
+            <ul class="list-group">
+                {% for notice in notices %}
+                    {% ifequal notice.description 'comment' %}
+                        <li class="list-group-item">
+                            <a href="{% url 'notice:update' %}?topic_id={{ notice.target.lnum }}&notice_id={{ notice.id }}#comment_elem_{{ notice.action_object.comnum }}"
+                            >
+                                <div class="alert alert-success" role="alert">
+                                    [{{ notice.timesince }}]{{ notice.verb }}</div>
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="list-group-item">
+                            <a href="{% url 'notice:update' %}?topic_id={{ notice.target.lnum }}&notice_id={{ notice.id }}"
+                            >
+                                <div class="alert alert-success" role="alert">
+                                    [{{ notice.timesince }}]{{ notice.verb }}</div>
+                            </a>
+                        </li>
+                    {% endifequal %}
+                {% endfor %}
+            </ul>
         </div>
-    {% endblock %}
+    </div>
+{% endblock %}
 </body>
 </html>
