@@ -63,7 +63,7 @@ class DetailedTopic (View):
         return render (request, 'topic.html',content)
 
 #文章点赞处理
-@method_decorator (login_required (), name='dispatch')
+@login_required
 def likeor_not(request):
     # 接收参数
     likeornot = request.GET.get ('likeornot')
