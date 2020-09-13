@@ -1,7 +1,7 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,36 +14,36 @@
     <link rel="stylesheet" href="/static/css/main.css">
 
     <!--[if lt IE 9]>
-      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
     <![endif]-->
-  </head>
-  <nav class="nav navbar-default navbar-fixed-top navbar-inverse">
-      <div class="container-fluid">
-          <div class="navbar-header">
-              <a class="navbar-brand" href="{% url 'learning_log:index' %}">
-                    Learning_log
-              </a>
-          </div>
+</head>
+<nav class="nav navbar-default navbar-fixed-top navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'learning_log:index' %}">
+                Learning_log
+            </a>
+        </div>
 
-          <div class="navbar-right">
-              {% include 'navbar_right.html' %}
-          </div>
+        <div class="navbar-right">
+            {% include 'navbar_right.html' %}
+        </div>
 
-      </div>
-  </nav>
-  <body>
-    <div class="container container_full">
-        {% block main %}
-        {% endblock %}
     </div>
+</nav>
+<body>
+<div class="container container_full">
+    {% block main %}
+    {% endblock %}
+</div>
 
-    <div class="footerpush" style="margin-top: 50px"></div>
-    </div>
+<div class="footerpush" style="margin-top: 50px"></div>
+</div>
 
-    {% include 'footer.html' %}
+{% include 'footer.html' %}
 
-    <script src="/static/jquery-3.0.0.min.js"></script>
-    <script src="/static/js/bootstrap.min.js"></script>
-  </body>
+<script src="/static/jquery-3.0.0.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+</body>
 </html>
