@@ -1,4 +1,4 @@
-#coding=utf-8
+# coding=utf-8
 """
 Django settings for DjangoWeb project.
 
@@ -15,8 +15,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+BASE_DIR = os.path.dirname (os.path.dirname (os.path.abspath (__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
@@ -29,7 +28,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -40,88 +38,74 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    #第三方库
-    'mdeditor',
-    'haystack',
-    'bootstrap3',
-    'ckeditor',
-    'mptt',
-    'notifications',
-    'password_reset',
+    # 第三方库
+    'mdeditor',      #markdwon富文本编辑器，用于笔记内容
+    'haystack',      #搜索引擎
+    'bootstrap3',    #样式模板
+    'ckeditor',      #ck富文本编辑器，用于评论
+    'mptt',          #树形结构库
+    'notifications', #消息传递
+    'password_reset', #密码重置
 
-    #功能app
-    'learning_log',
-    'users',
-    'comment',
-    'notice',
+    # 功能app
+    'learning_log',   #读书笔记
+    'users',          #用户
+    'comment',        #评论
+    'notice',         #消息传递
 ]
+#中间件
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.security.SecurityMiddleware', 'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware', 'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware', 'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 ROOT_URLCONF = 'DjangoWeb.urls'
 
 TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join (BASE_DIR, 'templates')],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-                #侧边栏全局上下文
-                'learning_log.my_context_processor.Side_navigation_bar_data',
-            ],
-        },
-    },
+    {'BACKEND': 'django.template.backends.django.DjangoTemplates',
+     'DIRS': [os.path.join (BASE_DIR, 'templates')],
+     'APP_DIRS': True,
+     'OPTIONS': {
+        'context_processors': ['django.template.context_processors.debug',
+                               'django.template.context_processors.request',
+                                'django.contrib.auth.context_processors.auth',
+                               'django.contrib.messages.context_processors.messages',
+                                # 侧边栏全局上下文
+                                'learning_log.my_context_processor.Side_navigation_bar_data',
+                               ],
+                },
+     },
 ]
 
 WSGI_APPLICATION = 'DjangoWeb.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'OPTIONS':{'charset':'utf8mb4'},
+        'OPTIONS': {'charset': 'utf8mb4'},
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'djangoweb',#使用的数据库名称
-        'USER':'root',#登录mysql数据库的用户名称
-        'PASSWORD':'root',#登录mysql数据库的用户密码
-        'HOST':'127.0.0.1',#表明使用的是本地mysql数据库
-        'PORT':'3306',#端口号
+        'NAME': 'djangoweb',
+        # 使用的数据库名称
+        'USER': 'root',  # 登录mysql数据库的用户名称
+        'PASSWORD': 'root',  # 登录mysql数据库的用户密码
+        'HOST': '127.0.0.1',  # 表明使用的是本地mysql数据库
+        'PORT': '3306',  # 端口号
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator', },
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator', },
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator', },
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator', },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
@@ -136,62 +120,53 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
-STATICFILES_DIRS = (
-os.path.join(BASE_DIR, "static"),
-)
+STATICFILES_DIRS = (os.path.join (BASE_DIR, "static"),)
 STATIC_URL = '/static/'
 
 # from django.conf import global_settings
 # global_settings
 
-#设置图片存储路径
-MEDIA_URL='/media/'
-MEDIA_ROOT=os.path.join(BASE_DIR,'static\\media')
+# 设置图片存储路径
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join (BASE_DIR, 'static\\media')
 
-#设置ckeditor富文本编辑器的文件上传路径
-CKEDITOR_UPLOAD_PATH='/media/'
-CKEDITOR_JQUERY_URL='jquery-3.0.0.min.js'
+# 设置ckeditor富文本编辑器的文件上传路径
+CKEDITOR_UPLOAD_PATH = '/media/'
+CKEDITOR_JQUERY_URL = 'jquery-3.0.0.min.js'
 CKEDITOR_IMAGE_BACKEND = 'pillow'
 
-#设置登录跳转路径
-LOGIN_REDIRECT_URL='/topics/1'
-#设置退出路径
-LOGOUT_REDIRECT_URL='learning_log:index'
-#设置访问限制路径
+# 设置登录跳转路径
+LOGIN_REDIRECT_URL = '/topics/1'
+# 设置退出路径
+LOGOUT_REDIRECT_URL = 'learning_log:index'
+# 设置访问限制路径
 LOGIN_URL = 'learning_log:index'
 
-#检索分词文件路径
+# 检索分词文件路径
 HAYSTACK_CONNECTIONS = {
-    'default': {
-        'ENGINE': 'learning_log.whoosh_backend_jeiba.WhooshEngine',
-        'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
-    },
+    'default': {'ENGINE': 'learning_log.whoosh_backend_jeiba.WhooshEngine',
+                'PATH': os.path.join (BASE_DIR, 'whoosh_index'),
+                },
 }
 
-#实时生成索引文件(数据更新实时生成 )
-HAYSTACK_SIGNAL_PROCESSOR='haystack.signals.RealtimeSignalProcessor'
+# 实时生成索引文件(数据更新实时生成 )
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 
-#django-bootstrap3的设置
-BOOTSTRAP3={
-    'include_jquery':True
-}
+# django-bootstrap3的设置
+BOOTSTRAP3 = {'include_jquery': True}
 
-#django-mdeditor
-MDEDITOR_CONFIGS = {
-'default':{
-    'width': '90%',  # 自定义编辑框宽度
-    'heigth': 500,   # 自定义编辑框高度
-    'toolbar': ["undo", "redo", "|",
-                "bold", "del", "italic", "quote", "ucwords", "uppercase", "lowercase", "|",
-                "h1", "h2", "h3", "h5", "h6", "|",
-                "list-ul", "list-ol", "hr", "|",
-                "link", "reference-link", "image", "code", "preformatted-text", "code-block", "table", "datetime"
-                , "html-entities", "pagebreak", "goto-line", "|",
-                "help", "info",
-                "||", "preview", "watch", "fullscreen"],  # 自定义编辑框工具栏
+# django-mdeditor
+MDEDITOR_CONFIGS = {'default': {'width': '90%',  # 自定义编辑框宽度
+    'heigth': 500,  # 自定义编辑框高度
+    'toolbar': ["undo", "redo", "|", "bold", "del", "italic", "quote", "ucwords",
+                "uppercase", "lowercase", "|", "h1","h2", "h3", "h5", "h6", "|",
+                "list-ul", "list-ol", "hr", "|", "link", "reference-link", "image",
+                "code","preformatted-text", "code-block", "table", "datetime",
+                "html-entities", "pagebreak", "goto-line", "|",
+                "help", "info", "||", "preview", "watch", "fullscreen"
+                ],  # 自定义编辑框工具栏
     'upload_image_formats': ["jpg", "jpeg", "gif", "png", "bmp", "webp"],  # 图片上传格式类型
     'image_folder': 'editor',  # 图片保存文件夹名称
     'theme': 'default',  # 编辑框主题 ，dark / default
@@ -206,41 +181,24 @@ MDEDITOR_CONFIGS = {
     'watch': True,  # 实时预览
     'lineWrapping': False,  # 自动换行
     'lineNumbers': False  # 行号
-    }
-}
+}}
 
-#django-ckeditor
-CKEDITOR_CONFIGS = {
-    # django-ckeditor默认使用default配置
-    'default': {
-        # 编辑器宽度自适应
-        'width':'auto',
-        'height':'250px',
-        # tab键转换空格数
-        'tabSpaces': 4,
-        # 工具栏风格
-        'toolbar': 'Custom',
-        # 工具栏按钮
-        'toolbar_Custom': [
-            # 表情 代码块
-            ['Smiley', 'CodeSnippet'],
-            # 字体风格
-            ['Bold', 'Italic', 'Underline', 'RemoveFormat', 'Blockquote'],
-            # 字体颜色
-            ['TextColor', 'BGColor'],
-            # 链接
-            ['Link', 'Unlink'],
-            # 列表
-            ['NumberedList', 'BulletedList'],
-            # 最大化
-            ['Maximize']
-        ],
-        # 加入代码块插件
-        'extraPlugins': ','.join(['codesnippet']),
-    }
-}
+# django-ckeditor
+CKEDITOR_CONFIGS = {# django-ckeditor默认使用default配置
+    'default': {# 编辑器宽度自适应
+        'width': 'auto', 'height': '250px', # tab键转换空格数
+        'tabSpaces': 4, # 工具栏风格
+        'toolbar': 'Custom', # 工具栏按钮
+        'toolbar_Custom': [# 表情 代码块
+            ['Smiley', 'CodeSnippet'], # 字体风格
+            ['Bold', 'Italic', 'Underline', 'RemoveFormat', 'Blockquote'], # 字体颜色
+            ['TextColor', 'BGColor'], # 链接
+            ['Link', 'Unlink'], # 列表
+            ['NumberedList', 'BulletedList'], # 最大化
+            ['Maximize']], # 加入代码块插件
+        'extraPlugins': ','.join (['codesnippet']), }}
 
-#SMPT服务器
+# SMPT服务器
 EMAIL_HOST = 'smtp.qq.com'
 # 邮箱名
 EMAIL_HOST_USER = 'jinfengfy@foxmail.com'
