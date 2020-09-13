@@ -84,7 +84,7 @@ class UserHome (View):
 
 
 # 用户主页点赞
-@method_decorator (login_required (), name='dispatch')
+@login_required
 def userlike(request):
     # 接收参数
     dianzan = request.GET.get ('dianzan')
@@ -105,7 +105,7 @@ def userlike(request):
 
 
 # 用户关注
-@method_decorator (login_required (), name='dispatch')
+@login_required
 def userfollow(request):
     # 接收参数
     guanzhu = request.GET.get ('guanzhu')
@@ -126,7 +126,7 @@ def userfollow(request):
 
 
 # 用户修改数据
-@method_decorator (login_required (), name='dispatch')
+@login_required
 def modify_data(request, user_id):
     content = User_more_info.objects.filter (user_id=user_id).first ()
     form = MoreInfoFrom (instance=content)
