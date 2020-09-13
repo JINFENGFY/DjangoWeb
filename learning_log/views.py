@@ -200,13 +200,3 @@ class OrCategory (View):
                  }
         return render (request, 'show_category.html',content)
 
-#根据热门文章筛选
-class OrHotlog (View):
-    def get(self, request, hotlog_id):
-        topic = LearningContent.objects.get (lnum=hotlog_id)
-        log = LearningContent.objects.get (lnum=hotlog_id)
-        result = log.users_like.filter (username=request.user)
-        flag = False
-        if result:
-            flag = True
-        return render (request, 'show_hotlog.html', {'topic': topic, 'flag': flag})

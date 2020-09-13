@@ -69,7 +69,7 @@
                     <div class="list-group">
                         <div style="text-align: center">热点文章</div>
                         {% for hotlog in Side_nav_hot %}
-                            <a href="{% url 'learning_log:hotlog' hotlog.lnum %}"
+                            <a href="{% url 'learning_log:topic' hotlog.lnum %}"
                                class="list-group-item">{{ hotlog.title|split_str_cut:8 }}
                                 <span class="badge">{{ hotlog.like_count }}</span>
                                 {% if forloop.counter == 1 %}
