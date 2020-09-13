@@ -20,6 +20,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
+
 from DjangoWeb import settings
 import notifications.urls
 
@@ -46,6 +47,9 @@ urlpatterns = [
 
     #消息通知处理
     url(r'notice/',include(('notice.urls','notice'),namespace='notice')),
+
+    #重置密码
+    url(r'password-reset/', include('password_reset.urls')),
 ]
 
 
