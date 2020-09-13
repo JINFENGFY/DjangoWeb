@@ -1,0 +1,18 @@
+{% load bootstrap3 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>500</title>
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+<div>
+    <h1>发生了500错误</h1>
+    <hr>
+    <a type="button" class="btn btn-warning" href="{% url 'learning_log:index' %}">返回首页</a>
+</div>
+
+</body>
+</html>
